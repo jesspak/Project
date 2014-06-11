@@ -80,7 +80,7 @@ public class Media implements Serializable, Cloneable  { //JB,JP
 	 */
 
 	public void setTitle(String title) {// JB
-		title = this.title;// JB
+		this.title = title;// JB
 	}
 
 	/**
@@ -91,7 +91,7 @@ public class Media implements Serializable, Cloneable  { //JB,JP
 	 */
 
 	public void setFormat(String format) {// JP
-		format = this.format;
+		this.format = format;
 
 	/**
 	 * sets the value of location to newLocation//JP
@@ -100,7 +100,7 @@ public class Media implements Serializable, Cloneable  { //JB,JP
 	 */
 
 	public void setLocation(String location) {// JP
-		location = this.location;// JP
+		this.location = location;// JP
 	}
 
 	/**
@@ -110,7 +110,7 @@ public class Media implements Serializable, Cloneable  { //JB,JP
 	 */
 
 	public void setNotes(String notes) {// JP
-		notes = this.notes;// JP
+		this.notes = notes;// JP
 	}
 
 	/**
