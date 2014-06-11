@@ -7,28 +7,40 @@ import java.util.ArrayList;
 
 public class Main {// JP
 	public static void main(String[] args) {// JP
-		Library library = new Library();
-	
-		Media newMedia = new Media();// JP
-		newMedia.setFormat(" ");// JP
-		newMedia.setLocation(" ");// JP
-		newMedia.setNotes(" ");// JP
-		library.add(newMedia);
 		
-		Book newBook = new Book();// JP
-		newBook.setAuthor(" ");// JP
-		library.add(newBook);
-		System.out.println(library);// JP
+		GUI gui = new GUI();
 		
-		Song newSong = new Song();// JP
-		newSong.setArtist(" ");// JP
-		newSong.setGenre(" ");// JP
-		System.out.println(newSong);// JP
-		Video newVideo = new Video();// JP
-		newVideo.setStar(" ");// JP
-		System.out.println(newVideo);// JP
-		VideoGame newVideoGame = new VideoGame();// JP
-		System.out.println(newVideoGame);// JP
+		
+		
+		
+		
+		
+		
+		
+		
+		
+//		Library library = new Library();
+//	
+//		Media newMedia = new Media();// JP
+//		newMedia.setFormat(" ");// JP
+//		newMedia.setLocation(" ");// JP
+//		newMedia.setNotes(" ");// JP
+//		library.add(newMedia);
+//		
+//		Book newBook = new Book();// JP
+//		newBook.setAuthor(" ");// JP
+//		library.add(newBook);
+//		System.out.println(library);// JP
+//		
+//		Song newSong = new Song();// JP
+//		newSong.setArtist(" ");// JP
+//		newSong.setGenre(" ");// JP
+//		System.out.println(newSong);// JP
+//		Video newVideo = new Video();// JP
+//		newVideo.setStar(" ");// JP
+//		System.out.println(newVideo);// JP
+//		VideoGame newVideoGame = new VideoGame();// JP
+//		System.out.println(newVideoGame);// JP
 	}
 
 }
