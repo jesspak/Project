@@ -7,18 +7,18 @@ import java.util.ArrayList;
 
 public class Main {// JP
 	public static void main(String[] args) {// JP
-		Library libraryList = new Library();
+		Library library = new Library();
 	
 		Media newMedia = new Media();// JP
 		newMedia.setFormat(" ");// JP
 		newMedia.setLocation(" ");// JP
 		newMedia.setNotes(" ");// JP
-		libraryList.add(newMedia);
+		library.add(newMedia);
 		
 		Book newBook = new Book();// JP
 		newBook.setAuthor(" ");// JP
-		libraryList.add(newBook);
-		System.out.println(newBook);// JP
+		library.add(newBook);
+		System.out.println(library);// JP
 		
 		Song newSong = new Song();// JP
 		newSong.setArtist(" ");// JP

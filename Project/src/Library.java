@@ -5,8 +5,8 @@ import java.io.Serializable;//JB
  * that adds, prints, deletes, and retrieves the data.
  */
 public class Library implements Serializable{
-	private Media library;
-	ArrayList<Media> LibraryList = new ArrayList <Media>();
+	
+	private ArrayList<Media> library;
 	/**
 	 * default constructor
 	 *JP
@@ -19,7 +19,7 @@ public class Library implements Serializable{
 	 * JB
 	 */
 	public void add(Media m){
-		
+		library.add(m);
 	}
 	
 	/**
@@ -29,13 +29,7 @@ public class Library implements Serializable{
 	public void sort(){
 		
 	}
-	/**
-	 * prints all the entries
-	 * JP
-	 */
-	public void printAllEntries(){
-		
-	}
+
 	/**
 	 * takes in the media type as a parameter and searches
 	 * the list of that same media type
