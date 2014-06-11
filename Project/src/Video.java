@@ -24,9 +24,11 @@ public class Video extends Media implements Serializable{ // JP JB
 	 * @param newNotes
 	 * JP
 	 */
-	public Video(String newTitle, String newStar,
-			String newFormat, String newLocation, String newNotes){
-		super(); //JP
+	public Video(String title, String star,
+			String format, String location, String notes){
+		super(title, format, location, notes); //JP
+		
+		setStar(star);
 	}
 
 	/**
