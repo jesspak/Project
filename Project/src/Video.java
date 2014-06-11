@@ -7,7 +7,7 @@ import java.io.Serializable; // JP JB
  *
  */
 public class Video extends Media implements Serializable{ // JP JB
-	private String videoStar;
+	private String star;
 	
 	/**
 	 * default constructor JP
@@ -24,8 +24,8 @@ public class Video extends Media implements Serializable{ // JP JB
 	 * @param newNotes
 	 * JP
 	 */
-	public Video(String newTitle, String newVideoStar,
-			String newVideoFormat, String newVideoLocation, String newVideoNotes){
+	public Video(String newTitle, String newStar,
+			String newFormat, String newLocation, String newNotes){
 		super(); //JP
 	}
 
@@ -33,8 +33,8 @@ public class Video extends Media implements Serializable{ // JP JB
 	 * returns the current value of videoStar
 	 * JP
 	 */
-	public String getVideoStar(){
-		return videoStar;
+	public String getStar(){
+		return star;
 	}
 
 	/**
@@ -42,15 +42,15 @@ public class Video extends Media implements Serializable{ // JP JB
 	 * @param newVideoStar
 	 * JP
 	 */
-	public void setVideoStar(String newVideoStar){
-		videoStar = "Video Star";
+	public void setStar(String newoStar){
+		star = "Video Star";
 	}
 	/**
 	 * Returns a String containing all the data stored //JP in this object.
 	 */
 
 	public String toString() {// JB
-		return "Video:" + "\n" + this.getVideoStar() + "\n" + super.toString();// JB
+		return "Video:" + "\n" + this.getStar() + "\n" + super.toString();// JB
 	}
 }
 

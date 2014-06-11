@@ -1,12 +1,12 @@
-import java.util.Arrays; // JB
+import java.util.ArrayList; // JB
 import java.io.Serializable;//JB
 /**
  * one object of this class creates a library and has methods 
  * that adds, prints, deletes, and retrieves the data.
  */
 public class Library implements Serializable{
-	private static final int LISTSIZE = 1000; //JP
-	private Media[] library; //JB
+	private Media library;
+	ArrayList<Media> LibraryList = new ArrayList <Media>();
 	/**
 	 * default constructor
 	 *JP
@@ -18,7 +18,7 @@ public class Library implements Serializable{
 	 * adds a book to the library
 	 * JB
 	 */
-	public void addBook(Media m){
+	public void add(Media m){
 		
 	}
 	
@@ -37,27 +37,27 @@ public class Library implements Serializable{
 		
 	}
 	/**
-	 * takes in the title as a parameter and searches
-	 * the list of that same title
-	 * JP
-	 */
-	public Media retrieveByMedia(){
-		return new Media();//JB
-	}
-	/**
-	 * takes in the title as a parameter and searches
-	 * the list of that same title
-	 * JP
-	 */
-	public Media retrieveByTitle(){
-		return new Media();//JB
-	}
-	/**
 	 * takes in the media type as a parameter and searches
+	 * the list of that same media type
+	 * JP
+	 */
+	public Media retrieveByMedia(Media m){
+		return new Media();//JB
+	}
+	/**
+	 * takes in the title as a parameter and searches
+	 * the list of that same title
+	 * JP
+	 */
+	public Media retrieveByTitle(Media title){
+		return new Media();//JB
+	}
+	/**
+	 * takes in the media type and title as a parameter and searches
 	 * the list of that same media type and title
 	 * JP
 	 */
-	public Media retrieveByTitleAndMedia(){
+	public Media retrieveByTitleAndMedia(Media tm){
 		return new Media();//JB
 	}
 	/**
@@ -65,6 +65,12 @@ public class Library implements Serializable{
 	 */
 	public void deleteEntry(){ // JP
 		
+	}
+	/**
+	 * 
+	 */
+	public String toString(){
+		return null;
 	}
 	
 }

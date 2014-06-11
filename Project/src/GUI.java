@@ -17,11 +17,7 @@ public class GUI extends JFrame implements ActionListener {
 	private JButton searchVideo; //JP
 	private JButton searchVideoGame; //JP
 	private JButton searchSong; //JP
-	private JButton diplayAll; //JP
-	private JButton diplayBook; //JP
-	private JButton diplayVideo; //JP
-	private JButton diplayVideoGame; //JP
-	private JButton diplaySong; //JP
+	private JButton displayAll; //JP
 	private JButton delete; //JP
 	private JTextField title; //JP
 	private JTextField author; //JP
@@ -30,8 +26,7 @@ public class GUI extends JFrame implements ActionListener {
 	private JTextField artist; //JP
 	private JTextField genre; //JP
 	private JTextField star; //JP
-	
-	
+	private JTextField resultField;
 	/**
 	 * creates components and adds the components to the 
 	 * frame

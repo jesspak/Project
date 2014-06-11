@@ -7,7 +7,7 @@ import java.io.Serializable; //JB
  *
  */
 public class Book extends Media implements Serializable{ //JB
-	private String bookAuthor; //JP
+	private String author; //JP
 	/**
 	 * default constructor 
 	 * JP
@@ -24,25 +24,25 @@ public class Book extends Media implements Serializable{ //JB
 	 * @param notes
 	 *  JP
 	 */
-	public Book(String newBookAuthor, String newTitle, 
-			String newBookFormat, String newBookLocation, String newBookNotes){
+	public Book(String newAuthor, String newTitle, 
+			String newFormat, String newLocation, String newNotes){
 		super();
 	}
 	/**
 	 * returns the current value of bookAuthor
 	 * JP
 	 */ 
-	public String getBookAuthor(){
-		return bookAuthor;
+	public String getAuthor(){
+		return author;
 	}
 		
 	/**
-	 * sets the value of bookAuthor to newBookAuthor
-	 * @param newBookAuthor
+	 * sets the value of author to newAuthor
+	 * @param newAuthor
 	 * JP
 	 */
-	public void setBookAuthor(String newBookAuthor){
-		bookAuthor = "Book Author";
+	public void setAuthor(String newAuthor){
+		author = "Book Author";
 	}
 
 	/**
@@ -51,7 +51,7 @@ public class Book extends Media implements Serializable{ //JB
 	 * JP
 	 */
 	public String toString(){
-		return "Book:" + "\n" + this.getBookAuthor()// JB
+		return "Book:" + "\n" + this.getAuthor()// JB
 				+ "\n" + super.toString();// JB
 	}
 	

@@ -7,8 +7,8 @@ import java.io.Serializable;//JB
  */
 
 public class Song extends Media implements Serializable {// JB
-	private String songArtist;// JP
-	private String songGenre;// JP
+	private String artist;// JP
+	private String genre;// JP
 
 	/**
 	 * default constructor//JP
@@ -22,25 +22,25 @@ public class Song extends Media implements Serializable {// JB
 	 * parameterized constructor//JP
 	 */
 
-	public Song(String newSongArtist, String newSongTitle, String newSongGenre,
-			String newSongFormat, String newSongLocation, String newSongNotes) {// JP
+	public Song(String newArtist, String newTitle, String newGenre,
+			String newFormat, String newLocation, String newNotes) {// JP
 		super();// JP
 	}
 
 	/**
-	 * returns the current value of songArtist//JP
+	 * returns the current value of artist//JP
 	 */
 
-	public String getSongArtist() {// JP
-		return songArtist;// JP
+	public String getArtist() {// JP
+		return artist;// JP
 	}
 
 	/**
-	 * returns the current value of songGenre//JP
+	 * returns the current value of genre//JP
 	 */
 
-	public String getSongGenre() {// JP
-		return songGenre;// JP
+	public String getGenre() {// JP
+		return genre;// JP
 	}
 
 	/**
@@ -48,8 +48,8 @@ public class Song extends Media implements Serializable {// JB
 	 * @param newSongArtist
 	 */
 
-	public void setSongArtist(String newSongArtist) {// JP
-		songArtist = "Song Artist";// JP
+	public void setArtist(String newArtist) {// JP
+		artist = "Song Artist";// JP
 	}
 
 	/**
@@ -57,16 +57,16 @@ public class Song extends Media implements Serializable {// JB
 	 * @param newSongGenre           JP
 	 */
 
-	public void setSongGenre(String newSongGenre) {// JP
-		songGenre = "Song Genre";// JP
+	public void setGenre(String newGenre) {// JP
+		genre = "Song Genre";// JP
 	}
 
 	/**
 	 * Returns a String containing all the data stored //JP in this object.
 	 */
 	public String toString() {// JB
-		return "Song:" + "\n" + this.getSongArtist() + "\n"// JB
-				+ this.getSongGenre() + "\n" + super.toString();// JB
+		return "Song:" + "\n" + this.getArtist() + "\n"// JB
+				+ this.getGenre() + "\n" + super.toString();// JB
 	}
 
 }
