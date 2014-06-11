@@ -15,20 +15,23 @@ public class Main {// JP
 		newMedia.setNotes(" ");// JP
 		library.add(newMedia);
 		
-		Book newBook = new Book();// JP
-		newBook.setAuthor(" ");// JP
+		Book newBook = new Book("Suzanne Collins", "The Hunger Games", "Bluray", "The floor", "Blatant ripoff of Japanese idea but way better");// JP
 		library.add(newBook);
 		System.out.println(library);// JP
 		
 		Song newSong = new Song();// JP
-		newSong.setArtist(" ");// JP
-		newSong.setGenre(" ");// JP
 		System.out.println(newSong);// JP
+		
 		Video newVideo = new Video();// JP
 		newVideo.setStar(" ");// JP
 		System.out.println(newVideo);// JP
+		
 		VideoGame newVideoGame = new VideoGame();// JP
 		System.out.println(newVideoGame);// JP
+		
+		library.sort();
+		
+		//compare 2 Media objects, says Elaine
 	}
 
 }
