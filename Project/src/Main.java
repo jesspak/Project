@@ -9,16 +9,7 @@ public class Main {// JP
 	public static void main(String[] args) {// JP
 		
 		GUI gui = new GUI();
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
 //		Library library = new Library();
 //	
 //		Media newMedia = new Media();// JP

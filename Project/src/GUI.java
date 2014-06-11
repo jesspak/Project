@@ -92,6 +92,9 @@ public class GUI extends JFrame implements ActionListener {
 	public GUI() {
 		this.initialize();
 	}
+	/**
+	 * prints all the information 
+	 */
 	public void printAll(){
 		
 	}
