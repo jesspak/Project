@@ -24,8 +24,8 @@ public class Book extends Media implements Serializable{ //JB
 	 * @param notes
 	 *  JP
 	 */
-	public Book(String newAuthor, String newTitle, 
-			String newFormat, String newLocation, String newNotes){
+	public Book(String author, String title, 
+			String format, String location, String notes){
 		super();
 	}
 	/**
