@@ -35,6 +35,14 @@ public class GUI extends JFrame implements ActionListener {
 	private void initialize() {
 		
 	}
+	
+	public String print(){
+		return library;
+		/*
+		*TB
+		*/
+	}
+	
 	/**
 	 * default constructor
 	 * JP
