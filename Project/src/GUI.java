@@ -36,8 +36,8 @@ public class GUI extends JFrame implements ActionListener {
 		
 	}
 	
-	public String print(){
-		return library;
+	public void print(){
+		System.out.print(library);
 		/*
 		*TB
 		*/
