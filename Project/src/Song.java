@@ -16,15 +16,21 @@ public class Song extends Media implements Serializable {// JB
 
 	public Song() {// JP
 		super();// JP
+		
+		this.artist = "artist";
+		this.genre = "genre";
 	}
 
 	/**
 	 * parameterized constructor//JP
 	 */
 
-	public Song(String newArtist, String newTitle, String newGenre,
-			String newFormat, String newLocation, String newNotes) {// JP
-		super();// JP
+	public Song(String artist, String title, String genre,
+			String format, String location, String notes) {// JP
+		super(title, format, location, notes);// JP
+		
+		this.artist = artist;
+		this.genre = genre;
 	}
 
 	/**
@@ -48,8 +54,8 @@ public class Song extends Media implements Serializable {// JB
 	 * @param newSongArtist
 	 */
 
-	public void setArtist(String newArtist) {// JP
-		artist = "Song Artist";// JP
+	public void setArtist(String artist) {// JP
+		this.artist = artist;// JP
 	}
 
 	/**
@@ -57,8 +63,8 @@ public class Song extends Media implements Serializable {// JB
 	 * @param newSongGenre           JP
 	 */
 
-	public void setGenre(String newGenre) {// JP
-		genre = "Song Genre";// JP
+	public void setGenre(String genre) {// JP
+		this.genre = genre;// JP
 	}
 
 	/**
