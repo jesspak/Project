@@ -1,4 +1,3 @@
-
 import java.io.Serializable;
 /**
  * One object of class Media stores a list of the various
@@ -24,15 +23,21 @@ public class Media implements Serializable, Cloneable  { //JB,JP
 	/**
 	 * parameterized constructor//JP
 	 * 
-	 * @param newTitle
-	 * @param newFormat
-	 * @param newLocation
-	 * @param newNotes
+	 * @param title
+	 * @param format
+	 * @param location
+	 * @param notes
 	 */
 
-	public Media(String newTitle, String newFormat, // JB
-			String newLocation, String newNotes) {// JP
+	public Media(String title, String format, // JB
+			String location, String notes) {// JP
+
+		this.title = title;
+		this.format = format;
+		this.location = location;
+		this.notes = notes;
 	}
+
 
 	/**
 	 * returns the current value of title//JB
@@ -73,8 +78,8 @@ public class Media implements Serializable, Cloneable  { //JB,JP
 	 *            //JB
 	 */
 
-	public void setTitle(String newTitle) {// JB
-		title = "Title";// JB
+	public void setTitle(String title) {// JB
+		this.title = title;// JB
 	}
 
 	/**
@@ -84,9 +89,8 @@ public class Media implements Serializable, Cloneable  { //JB,JP
 	 *            //JP
 	 */
 
-	public void setFormat(String newFormat) {// JP
-		format = "Format";// JP
-	}
+	public void setFormat(String format) {// JP
+		this.format = format;
 
 	/**
 	 * sets the value of location to newLocation//JP
@@ -94,8 +98,8 @@ public class Media implements Serializable, Cloneable  { //JB,JP
 	 * @param newLocation
 	 */
 
-	public void setLocation(String newLocation) {// JP
-		location = "Location";// JP
+	public void setLocation(String location) {// JP
+		this.location = location;// JP
 	}
 
 	/**
@@ -104,8 +108,8 @@ public class Media implements Serializable, Cloneable  { //JB,JP
 	 * @param newNotes
 	 */
 
-	public void setNotes(String newNotes) {// JP
-		notes = "Notes";// JP
+	public void setNotes(String notes) {// JP
+		this.notes = notes;// JP
 	}
 
 	/**
