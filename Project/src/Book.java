@@ -24,9 +24,18 @@ public class Book extends Media implements Serializable{ //JB
 	 * @param notes
 	 *  JP
 	 */
-	public Book(String newAuthor, String newTitle, 
-			String newFormat, String newLocation, String newNotes){
-		super();
+	public Book(String author, String title, 
+			String format, String location, String notes){
+	/**
+         * calls super consturctor of Media class and passes paaramaters
+         */
+
+		super(title, format, location, notes);
+
+		/**
+		 *passes author to setAuthor method to set the author of book
+		 */
+		this.author = author;
 	}
 	/**
 	 * returns the current value of bookAuthor
@@ -35,14 +44,14 @@ public class Book extends Media implements Serializable{ //JB
 	public String getAuthor(){
 		return author;
 	}
-		
+
 	/**
 	 * sets the value of author to newAuthor
 	 * @param newAuthor
 	 * JP
 	 */
-	public void setAuthor(String newAuthor){
-		author = "Book Author";
+	public void setAuthor(String author){
+		this.author = author;
 	}
 
 	/**
@@ -54,5 +63,5 @@ public class Book extends Media implements Serializable{ //JB
 		return "Book:" + "\n" + this.getAuthor()// JB
 				+ "\n" + super.toString();// JB
 	}
-	
+
 }
