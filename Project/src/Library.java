@@ -27,7 +27,36 @@ public class Library implements Serializable{
 	 * JP
 	 */
 	public void sort(){
+		Arraylist<Media> bookList = new ArrayList<Media>();
+		for (int i=0; i< library.size(); i++){
+			if(library.get(i) instaceof Book.getClass()){
+				bookList.add(library.get(i));
+			}
+		}
+
+		Arraylist<Media> songList = new ArrayList<Media>();
+		for (int i=0; i< library.size(); i++){
+			if(library.get(i) instaceof Song.getClass()){
+				sonList.add(library.get(i));
+			}
+		}
+
+		Arraylist<Media> videoList = new ArrayList<Media>();
+		for (int i=0; i< library.size(); i++){
+			if(library.get(i) instaceof Video.getClass()){
+				videoList.add(library.get(i));
+			}
+		}
+
+		Arraylist<Media> videoGameList = new ArrayList<Media>();
+		for (int i=0; i< library.size(); i++){
+			if(library.get(i) instaceof VideoGame.getClass()){
+				videoGameList.add(library.get(i));
+			}
+		}
 		
+		Arraylist<Media> sortedArrayList = new ArrayList<Media>();
+
 	}
 
 	/**
@@ -46,6 +75,17 @@ public class Library implements Serializable{
 		}
 		return curMedia;
 	}
+	
+	public Media retrieveByBook(){
+		Arraylist<Media> mediaList = new ArrayList<Media>();
+		for (int i=0; i< library.size(); i++){
+			if(library.get(i) instaceof Book.getClass()){
+				mediaList.add(library.get(i));
+			}
+		}
+		return mediaList;
+	}
+	
 	/**
 	 * takes in the title as a parameter and searches
 	 * the list of that same title
