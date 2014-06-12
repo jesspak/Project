@@ -64,16 +64,16 @@ public class Library implements Serializable{
 	 * the list of that same media type
 	 * JP
 	 */
-	public Media retrieveByMedia(Media m){
-		int i= 0;
-		Media curMedia;
-		for (i = 0; i < library.size(); i++){
-			curMedia = library.get(i);
-			if(curMedia == title){
-				break;
-			}
-		}
-		return curMedia;
+	// public Media retrieveByMedia(Media m){
+	// 	int i= 0;
+	// 	Media curMedia;
+	// 	for (i = 0; i < library.size(); i++){
+	// 		curMedia = library.get(i);
+	// 		if(curMedia == title){
+	// 			break;
+	// 		}
+	// 	}
+	// 	return curMedia;
 	}
 	
 	public Media retrieveByBook(){
