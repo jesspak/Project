@@ -36,7 +36,15 @@ public class Library implements Serializable{
 	 * JP
 	 */
 	public Media retrieveByMedia(Media m){
-		return new Media();//JB
+		int i= 0;
+		Media curMedia;
+		for (i = 0; i < library.size(); i++){
+			curMedia = library.get(i);
+			if(curMedia == title){
+				break;
+			}
+		}
+		return curMedia;
 	}
 	/**
 	 * takes in the title as a parameter and searches
@@ -57,8 +65,15 @@ public class Library implements Serializable{
 	/**
 	 * deletes an entry from an ArrayList JB
 	 */
-	public void deleteEntry(){ // JP
-		
+	public void deleteEntry(Media title){ // JP
+		int i = 0;
+		for (i = 0; i < library.size(); i++){
+			Media curMedia = library.get(i);
+			if(curMedia == title){
+				break;
+			}
+		}
+		library.remove(i);
 	}
 	/**
 	 * 
