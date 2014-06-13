@@ -125,8 +125,12 @@ public class Media implements Serializable, Cloneable  { //JB,JP
 	/**
 	 * Compares entries to allow them to be sorted.//JB
 	 */
-	public int compareTo(Object arg0) {// JB
-		return 0;// JB
+	public int compareTo(Media compareTitle) {
+ 
+		int compareQuantity = ((Media) compareTitle).getQuantity(); 
+ 
+		//ascending order
+		return this.quantity - compareQuantity;
 	}
 
 }
