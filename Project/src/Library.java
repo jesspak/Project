@@ -4,7 +4,7 @@ import java.io.Serializable;//JB
  * one object of this class creates a library and has methods 
  * that adds, prints, deletes, and retrieves the data.
  */
-public class Library implements Serializable{
+public class Library implements Serializable implements Comparable{
 	
 	private ArrayList<Media> library;
 	/**
@@ -29,8 +29,20 @@ public class Library implements Serializable{
 	public void sort(){
 		Arraylist<Media> bookList = new ArrayList<Media>();
 		for (int i=0; i< library.size(); i++){
-			if(library.get(i) instaceof Book.getClass()){
-				bookList.add(library.get(i));
+			if (library.get(i) instaceof Book.getClass()){
+				if (bookList.size() == 0) 
+					bookList.add(library.get(i);
+				else 
+					for (int j = 0; j < bookList.size(); j++){
+						if ((library.get(i).getTitle.compareTo(bookList(j).getTitle)) < 0){
+							for (int g = 0; g < bookList.size(); g++){
+								if (bookList.get(int g) >= bookList.get(j)){
+									bookList.get(g + 1) = bookList.get(g);
+								}
+							bookList.add(j, library.get(i))
+								
+						}
+					}
 			}
 		}
 
@@ -162,7 +174,10 @@ public class Library implements Serializable{
 	 * 
 	 */
 	public String toString(){
-		return null;
+		String finalList = "";
+		for (int i = 0; i < sortedArrayList.size(); i++)
+		finalList += sortedArrayList(i);
+		return finalList;
 	}
 	
 }
