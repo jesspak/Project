@@ -56,6 +56,12 @@ public class Library implements Serializable{
 		}
 		
 		Arraylist<Media> sortedArrayList = new ArrayList<Media>();
+			sortedArrayList.addAll(bookList);
+			sortedArrayList.addAll(songList);
+			sortedArrayList.addAll(videoList);
+			sortedArrayList.addAll(videoGameList);
+
+
 
 	}
 
