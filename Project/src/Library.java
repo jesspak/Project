@@ -77,13 +77,43 @@ public class Library implements Serializable{
 	}
 	
 	public Media retrieveByBook(){
-		Arraylist<Media> mediaList = new ArrayList<Media>();
+		Arraylist<Media> bookList = new ArrayList<Media>();
 		for (int i=0; i< library.size(); i++){
 			if(library.get(i) instaceof Book.getClass()){
-				mediaList.add(library.get(i));
+				bookList.add(library.get(i));
 			}
 		}
-		return mediaList;
+		return bookList;
+	}
+	
+	public Media retrieveBySong(){
+		Arraylist<Media> songList = new ArrayList<Media>();
+		for (int i=0; i< library.size(); i++){
+			if(library.get(i) instaceof Song.getClass()){
+				songList.add(library.get(i));
+			}
+		}
+		return songList;
+	}
+	
+	public Media retrieveByVideo(){
+		Arraylist<Media> videoList = new ArrayList<Media>();
+		for (int i=0; i< library.size(); i++){
+			if(library.get(i) instaceof Video.getClass()){
+				videoList.add(library.get(i));
+			}
+		}
+		return videoList;
+	}
+	
+	public Media retrieveByVideoGame(){
+		Arraylist<Media> videoGameList = new ArrayList<Media>();
+		for (int i=0; i< library.size(); i++){
+			if(library.get(i) instaceof VideoGame.getClass()){
+				videoGameList.add(library.get(i));
+			}
+		}
+		return videoGameList;
 	}
 	
 	/**
@@ -92,7 +122,14 @@ public class Library implements Serializable{
 	 * JP
 	 */
 	public Media retrieveByTitle(Media title){
-		return new Media();//JB
+		int i = 0;
+		for (i = 0; i < library.size(); i++){
+			Media curMedia = library.get(i);
+			if(curMedia == title){
+				break;
+			}
+		}
+		return library(i);
 	}
 	/**
 	 * takes in the media type and title as a parameter and searches
