@@ -11,7 +11,7 @@ import java.awt.TextField;
 import java.applet.Applet;
 
 public class GUI extends JFrame implements ActionListener {
-	private JLabel prompt; //JP
+	public JLabel prompt; //JP
 	private JButton addBook;//JP
 	private JButton addSong;//JP
 	private JButton addVideo;//JP
@@ -106,16 +106,40 @@ public class GUI extends JFrame implements ActionListener {
 		if (prompt != null)
 			this.remove(prompt);
 		if (evt.getSource() == addBook) {		
-			
+			String authorInput = JOptionPane.showInputDialog(null, "Enter Author Name: ");
+			String title = JOptionPane.showInputDialog(null, "Enter Title: ");
+			String format = JOptionPane.showInputDialog(null, "Enter Format: ");
+			String location = JOptionPane.showInputDialog(null, "Enter Location: ");
+			String notes = JOptionPane.showInputDialog(null, "Enter Notes: ");
+					
+			Main.gotNewBook(authorInput, title, format, location, notes);
 		} 
 		else if(evt.getSource() == addSong) {
+			String artistInput = JOptionPane.showInputDialog(null, "Enter Artist: ");
+			String title = JOptionPane.showInputDialog(null, "Enter Title: ");
+			String genre = JOptionPane.showInputDialog(null, "Enter Title: ");
+			String format = JOptionPane.showInputDialog(null, "Enter Format: ");
+			String location = JOptionPane.showInputDialog(null, "Enter Location: ");
+			String notes = JOptionPane.showInputDialog(null, "Enter Notes: ");
 			
+			Main.gotNewSong(artistInput, title, genre, format, location, notes);
 		}
 		else if(evt.getSource() == addVideo) {
+			String starInput = JOptionPane.showInputDialog(null, "Enter Star: ");
+			String title = JOptionPane.showInputDialog(null, "Enter Title: ");
+			String format = JOptionPane.showInputDialog(null, "Enter Format: ");
+			String location = JOptionPane.showInputDialog(null, "Enter Location: ");
+			String notes = JOptionPane.showInputDialog(null, "Enter Notes: ");
 			
+			Main.gotNewVideo(starInput, title, format, location, notes);
 		}
 		else if(evt.getSource() == addVideoGame) {
+			String title = JOptionPane.showInputDialog(null, "Enter Title: ");
+			String format = JOptionPane.showInputDialog(null, "Enter Format: ");
+			String location = JOptionPane.showInputDialog(null, "Enter Location: ");
+			String notes = JOptionPane.showInputDialog(null, "Enter Notes: ");
 			
+			Main.gotNewVideoGame(title, format, location, notes);
 		}
 		else if(evt.getSource() == searchByTitle) {
 			
@@ -127,69 +151,12 @@ public class GUI extends JFrame implements ActionListener {
 		
 		}
 		else if(evt.getSource() == displayAll) {
-		
+			Main.printLibrary();
 		}	
 		else if(evt.getSource() == delete) {
 			
 		}
 		validate();
-	}
-	public void addBook(){
-		author = new JTextField(20);
-		this.add(author);
-		prompt = new JLabel(author.getText() + "Book Author: ");
-		this.add(prompt);
-		
-		title = new JTextField(20);
-		this.add(title);
-		prompt = new JLabel(title.getText() + "Book Title: ");
-		this.add(prompt);
-		
-		format = new JTextField(20);
-		this.add(format);
-		prompt = new JLabel(format.getText() + "Book Format: ");
-		this.add(prompt);
-		
-		location = new JTextField(20);
-		this.add(location);
-		prompt = new JLabel(location.getText() + "Book Location: ");
-		this.add(prompt);
-		
-		notes = new JTextField(20);
-		this.add(notes);
-		prompt = new JLabel(notes.getText() + "Book Notes: ");
-		this.add(prompt);
-	}
-	
-	public void addSong(){
-		artist = new JTextField(20);
-		this.add(artist);
-		prompt = new JLabel(artist.getText() + "Song Artist: ");
-		this.add(prompt);
-		
-		title = new JTextField(20);
-		this.add(title);
-		prompt = new JLabel(title.getText() + "Song Title: ");
-		this.add(prompt);
-		
-		genre = new JTextField(20);
-		this.add(genre);
-		prompt = new JLabel(genre.getText() + "Song Genre: ");
-		this.add(prompt);
-		
-		format = new JTextField(20);
-		this.add(format);
-		prompt = new JLabel(format.getText() + "Song Format: ");
-		this.add(prompt);
-		
-		location = new JTextField(20);
-		this.add(location);
-		prompt = new JLabel(location.getText() + "Song Location: ");
-		this.add(prompt);
-		
-		notes = new JTextField(20);
-		this.add(notes);
-		prompt = new JLabel(notes.getText() + "Song Notes: ");
-		this.add(prompt);
+
 	}
 }

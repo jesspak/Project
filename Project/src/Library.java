@@ -12,7 +12,7 @@ public class Library implements Serializable{
 	 *JP
 	 */
 	public Library(){
-		
+		library = new ArrayList<Media>();
 	}
 	/**
 	 * adds a book to the library
@@ -64,7 +64,10 @@ public class Library implements Serializable{
 	 * 
 	 */
 	public String toString(){
-		return null;
+		String result = " ";
+		for(int i = 0; i < library.size(); i++)
+			result += " " + library.get(i);
+		return result;
 	}
 	
 }
