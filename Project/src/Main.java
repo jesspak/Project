@@ -32,7 +32,38 @@ public class Main {// JP
 //		System.out.println(newVideo);// JP
 //		VideoGame newVideoGame = new VideoGame();// JP
 //		System.out.println(newVideoGame);// JP
+	
+	/**
+	 * Tom's code'
+	 */
+	
+		// Library library = new Library();
+	
+		// Media newMedia = new Media();// JP
+		// newMedia.setFormat(" ");// JP
+		// newMedia.setLocation(" ");// JP
+		// newMedia.setNotes(" ");// JP
+		// library.add(newMedia);
+		
+		// Book newBook = new Book("Suzanne Collins", "The Hunger Games", "Bluray", "The floor", "Blatant ripoff of Japanese idea but way better");// JP
+		// library.add(newBook);
+		// System.out.println(library);// JP
+		
+		// Song newSong = new Song();// JP
+		// System.out.println(newSong);// JP
+		
+		// Video newVideo = new Video();// JP
+		// newVideo.setStar(" ");// JP
+		// System.out.println(newVideo);// JP
+		
+		// VideoGame newVideoGame = new VideoGame();// JP
+		// System.out.println(newVideoGame);// JP
+		
+		// library.sort();
+		
+		//compare 2 Media objects, says Elaine
 	}
+
 
 }
 
