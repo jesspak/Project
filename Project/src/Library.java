@@ -27,7 +27,7 @@ public class Library implements Serializable implements Comparable{
 	 * JP
 	 */
 	public void sort(){
-		Arraylist<Media> bookList = new ArrayList<Media>();
+		ArrayList<Media> bookList = new ArrayList<Media>();
 		for (int i=0; i< library.size(); i++){
 			if (library.get(i) instaceof Book.getClass()){
 				if (bookList.size() == 0) 
@@ -46,28 +46,28 @@ public class Library implements Serializable implements Comparable{
 			}
 		}
 
-		Arraylist<Media> songList = new ArrayList<Media>();
+		ArrayList<Media> songList = new ArrayList<Media>();
 		for (int i=0; i< library.size(); i++){
 			if(library.get(i) instaceof Song.getClass()){
 				sonList.add(library.get(i));
 			}
 		}
 
-		Arraylist<Media> videoList = new ArrayList<Media>();
+		ArrayList<Media> videoList = new ArrayList<Media>();
 		for (int i=0; i< library.size(); i++){
 			if(library.get(i) instaceof Video.getClass()){
 				videoList.add(library.get(i));
 			}
 		}
 
-		Arraylist<Media> videoGameList = new ArrayList<Media>();
+		ArrayList<Media> videoGameList = new ArrayList<Media>();
 		for (int i=0; i< library.size(); i++){
 			if(library.get(i) instaceof VideoGame.getClass()){
 				videoGameList.add(library.get(i));
 			}
 		}
 		
-		Arraylist<Media> sortedArrayList = new ArrayList<Media>();
+		ArrayList<Media> sortedArrayList = new ArrayList<Media>();
 			sortedArrayList.addAll(bookList);
 			sortedArrayList.addAll(songList);
 			sortedArrayList.addAll(videoList);
@@ -115,7 +115,7 @@ public class Library implements Serializable implements Comparable{
 	}
 	
 	public Media retrieveByVideo(){
-		Arraylist<Media> videoList = new ArrayList<Media>();
+		ArrayList<Media> videoList = new ArrayList<Media>();
 		for (int i=0; i< library.size(); i++){
 			if(library.get(i) instaceof Video.getClass()){
 				videoList.add(library.get(i));
@@ -125,7 +125,7 @@ public class Library implements Serializable implements Comparable{
 	}
 	
 	public Media retrieveByVideoGame(){
-		Arraylist<Media> videoGameList = new ArrayList<Media>();
+		ArrayList<Media> videoGameList = new ArrayList<Media>();
 		for (int i=0; i< library.size(); i++){
 			if(library.get(i) instaceof VideoGame.getClass()){
 				videoGameList.add(library.get(i));
