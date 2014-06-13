@@ -14,6 +14,8 @@ public class Book extends Media implements Serializable{ //JB
 	 */ 
 	public Book(){
 		super();
+		
+		author = "";
 	}
 	/**
 	 * parameterized constructor
