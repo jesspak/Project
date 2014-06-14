@@ -147,7 +147,7 @@ public class Library implements Serializable{
 	 * JP
 	 */
 	public String retrieveByTitle(String title){
-		String curMedia;
+		String curMedia = "";
 		int i = 0;
 		for (i = 0; i < library.size(); i++){
 			curMedia = library.get(i).getTitle();
