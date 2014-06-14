@@ -61,7 +61,7 @@ public class Library implements Serializable {
 				}
 					
 			}
-		}
+		
 
 		ArrayList<Media> videoList = new ArrayList<Media>();
 		for (int i3=0; i3 < library.size(); i3++){
@@ -103,7 +103,7 @@ public class Library implements Serializable {
 		library = sortedArrayList;
 		}
 		}
-
+		}
 	/**
 	 * takes in the media type as a parameter and searches the list of that same
 	 * media type JP
@@ -206,6 +206,6 @@ public class Library implements Serializable {
 		for (int i = 0; i < list.size(); i++)
 			finalList += list.get(i);
 		return finalList;
-	}
+	
 
-		}}
+	}}
