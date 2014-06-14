@@ -15,7 +15,7 @@ public class Book extends Media implements Serializable{ //JB
 	public Book(){
 		super();
 
-		author = "";
+		author = "Author";
 	}
 	/**
 	 * parameterized constructor
@@ -28,7 +28,7 @@ public class Book extends Media implements Serializable{ //JB
 	 */
 	public Book(String author, String title, 
 			String format, String location, String notes){
-	/**
+		/**
          * calls super constructor of Media class and passes parameters
          */
 
@@ -62,7 +62,7 @@ public class Book extends Media implements Serializable{ //JB
 	 * JP
 	 */
 	public String toString(){
-		return "Book:" + "\n" + this.getAuthor()// JB
+		return "Book:" + "\n" + "Author: " + this.getAuthor()// JB
 				+ "\n" + super.toString();// JB
 	}
 

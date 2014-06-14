@@ -151,7 +151,8 @@ public class GUI extends JFrame implements ActionListener {
 		
 		}
 		else if(evt.getSource() == displayAll) {
-			Main.printLibrary();
+			JOptionPane.showMessageDialog(null, Main.printLibrary());
+			//Main.printLibrary();
 		}	
 		else if(evt.getSource() == delete) {
 			

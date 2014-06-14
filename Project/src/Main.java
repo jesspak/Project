@@ -53,7 +53,8 @@ public class Main {// JP
 	 * @return
 	 */
 	public static String printLibrary(){
-		return ourLibrary.toString();
+		String result = ourLibrary.toString();
+		return result;
 	}
 	public static void main(String[] args) {// JP
 		

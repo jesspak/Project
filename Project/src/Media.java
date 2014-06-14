@@ -32,6 +32,11 @@ public class Media implements Serializable, Cloneable  { //JB,JP
 
 	public Media(String newTitle, String newFormat, // JB
 			String newLocation, String newNotes) {// JP
+
+		title = newTitle;
+		format = newFormat;
+		location = newLocation;
+		notes = newNotes;
 	}
 
 	/**
@@ -74,7 +79,7 @@ public class Media implements Serializable, Cloneable  { //JB,JP
 	 */
 
 	public void setTitle(String newTitle) {// JB
-		title = "Title";// JB
+		title = newTitle;// JB
 	}
 
 	/**
@@ -85,7 +90,7 @@ public class Media implements Serializable, Cloneable  { //JB,JP
 	 */
 
 	public void setFormat(String newFormat) {// JP
-		format = "Format";// JP
+		format = newFormat;// JP
 	}
 
 	/**
@@ -95,7 +100,7 @@ public class Media implements Serializable, Cloneable  { //JB,JP
 	 */
 
 	public void setLocation(String newLocation) {// JP
-		location = "Location";// JP
+		location = newLocation;// JP
 	}
 
 	/**
@@ -105,7 +110,7 @@ public class Media implements Serializable, Cloneable  { //JB,JP
 	 */
 
 	public void setNotes(String newNotes) {// JP
-		notes = "Notes";// JP
+		notes = newNotes;// JP
 	}
 
 	/**
@@ -113,9 +118,9 @@ public class Media implements Serializable, Cloneable  { //JB,JP
 	 */
 
 	public String toString() {// JP
-		return this.getTitle() + "\n" + this.getFormat() + "\n"
-				+ this.getLocation()// JB
-				+ "\n" + this.getNotes() + "\n";// JP
+		return "Title: " + this.getTitle() + "\n" + "Format: " + this.getFormat() + "\n"
+				+ "Location: " + this.getLocation()// JB
+				+ "\n" + "Notes: " + this.getNotes() + "\n";// JP
 	}
 
 	/**

@@ -14,6 +14,7 @@ public class VideoGame extends Media implements Serializable{ //JB JP
 	 */
 	public VideoGame(){
 		super();
+		
 	}
 	/**
 	 * parameterized constructor JP
