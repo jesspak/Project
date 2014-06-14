@@ -28,19 +28,7 @@ public class Book extends Media implements Serializable{ //JB
 	 */
 	public Book(String author, String title, 
 			String format, String location, String notes){
-<<<<<<< HEAD
 	/**
-         * calls super consturctor of Media class and passes paaramaters
-         */
-				 
-		super(title, format, location, notes);
-		
-		/**
-		 *passes author to setAuthor method to set the author of book
-		 */
-		setAuthor(author);
-=======
-		/**
          * calls super constructor of Media class and passes parameters
          */
 		super(title, format, location, notes);
