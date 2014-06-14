@@ -14,13 +14,6 @@ public class Song extends Media implements Serializable {// JB
 	 * default constructor//JP
 	 */
 
-<<<<<<< HEAD
-	public Song(artist, genre, title, format, location, notes) {// JP
-		super(title, format, location, notes);// JP
-		
-		setArtist(artist);
-		setGenre(genre);
-=======
 	public Song() {// JP
 		super();// JP
 		artist = "Artist";
