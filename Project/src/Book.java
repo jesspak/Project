@@ -31,11 +31,10 @@ public class Book extends Media implements Serializable{ //JB
 		/**
          * calls super constructor of Media class and passes parameters
          */
-
 		super(title, format, location, notes);
 
 		/**
-		 *passes author to setAuthor method to set the author of book
+		 * sets the value this.author to author
 		 */
 		this.author = author;
 	}
@@ -62,8 +61,7 @@ public class Book extends Media implements Serializable{ //JB
 	 * JP
 	 */
 	public String toString(){
-		return "Book:" + "\n" + "Author: " + this.getAuthor()// JB
+		return "\t" +"Book:" + "\n" + "Author: " + this.getAuthor()// JB
 				+ "\n" + super.toString();// JB
 	}
-
 }

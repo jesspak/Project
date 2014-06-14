@@ -26,7 +26,7 @@ public class Song extends Media implements Serializable {// JB
 
 	public Song(String newArtist, String newTitle, String newGenre,
 			String newFormat, String newLocation, String newNotes) {// JP
-		super();// JP
+		super(newTitle, newFormat, newLocation, newNotes);// JP
 		artist = newArtist;
 		genre = newGenre;
 	}
@@ -69,7 +69,7 @@ public class Song extends Media implements Serializable {// JB
 	 * Returns a String containing all the data stored //JP in this object.
 	 */
 	public String toString() {// JB
-		return "Song:" + "\n" + "Artist: " + this.getArtist() + "\n"// JB
+		return "\t" + "Song:" + "\n" + "Artist: " + this.getArtist() + "\n"// JB
 				+ "Genre: " + this.getGenre() + "\n" + super.toString();// JB
 	}
 

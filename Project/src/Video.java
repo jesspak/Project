@@ -27,7 +27,7 @@ public class Video extends Media implements Serializable{ // JP JB
 	 */
 	public Video(String newTitle, String newStar,
 			String newFormat, String newLocation, String newNotes){
-		super(); //JP
+		super(newTitle, newFormat, newLocation, newNotes); //JP
 		star = newStar;
 	}
 
@@ -52,7 +52,7 @@ public class Video extends Media implements Serializable{ // JP JB
 	 */
 
 	public String toString() {// JB
-		return "Video:" + "\n" + "Star: " + this.getStar() + "\n" + super.toString();// JB
+		return "\t" + "Video:" + "\n" + "Star: " + this.getStar() + "\n" + super.toString();// JB
 	}
 }
 

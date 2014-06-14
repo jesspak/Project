@@ -29,105 +29,89 @@ public class Media implements Serializable, Cloneable  { //JB,JP
 	 * @param newLocation
 	 * @param newNotes
 	 */
-
 	public Media(String newTitle, String newFormat, // JB
 			String newLocation, String newNotes) {// JP
-
 		title = newTitle;
 		format = newFormat;
 		location = newLocation;
 		notes = newNotes;
 	}
-
 	/**
 	 * returns the current value of title//JB
 	 */
-
 	public String getTitle() {// JB
 		return title;// JB
 	}
-
 	/**
 	 * returns the current value of format//JP
 	 */
-
 	public String getFormat() {// JP
 		return format;// JP
 	}
-
 	/**
 	 * returns the current value of location//JP
 	 */
-
 	public String getLocation() {// JP
 		return location;// JP
 	}
-
 	/**
 	 * returns the current value of notes//JP
 	 */
-
 	public String getNotes() {// JP
 		return notes;// JP
 	}
-
 	/**
 	 * sets the value of title to newTitle//JB
 	 * 
 	 * @param newTitle
 	 *            //JB
 	 */
-
 	public void setTitle(String newTitle) {// JB
 		title = newTitle;// JB
 	}
-
 	/**
 	 * sets the value of format to newFormat//JP
 	 * 
 	 * @param newFormat
 	 *            //JP
 	 */
-
 	public void setFormat(String newFormat) {// JP
 		format = newFormat;// JP
 	}
-
 	/**
 	 * sets the value of location to newLocation//JP
 	 * 
 	 * @param newLocation
 	 */
-
 	public void setLocation(String newLocation) {// JP
 		location = newLocation;// JP
 	}
-
 	/**
 	 * sets the value of notes to newNotes//JP
 	 * 
 	 * @param newNotes
 	 */
-
 	public void setNotes(String newNotes) {// JP
 		notes = newNotes;// JP
 	}
-
 	/**
-	 * Returns a String containing all the data stored //JP in this object.
+	 * Returns a String containing all the data stored in this object. JP
 	 */
-
 	public String toString() {// JP
 		return "Title: " + this.getTitle() + "\n" + "Format: " + this.getFormat() + "\n"
 				+ "Location: " + this.getLocation()// JB
-				+ "\n" + "Notes: " + this.getNotes() + "\n";// JP
+				+ "\n" + "Notes: " + this.getNotes() + "\n" + "\n";// JP
 	}
 
 	/**
 	 * Compares entries to allow them to be sorted.//JB
 	 */
-	public int compareTo(Object arg0) {// JB
-		return 0;// JB
-	}
+//	public int compareTo(Media m) {// JB
+//		int compareQuantity = ((Media) compareTitle).getQuantity(); 
+//		 
+//		//ascending order
+//		return this.quantity - compareQuantity;
+//
+//	}
 
 }

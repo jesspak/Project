@@ -43,7 +43,7 @@ public class GUI extends JFrame implements ActionListener {
 	 */
 	private void initialize() {
 		this.setLayout(new FlowLayout());
-		this.setSize(900, 900);
+		this.setSize(600, 300);
 		
 		addBook = new JButton("Add Book");
 		this.add(addBook);
@@ -93,12 +93,6 @@ public class GUI extends JFrame implements ActionListener {
 		this.initialize();
 	}
 	/**
-	 * prints all the information 
-	 */
-	public void printAll(){
-		
-	}
-	/**
 	 * contains the code response to the components
 	 * JP
 	 */
@@ -106,7 +100,7 @@ public class GUI extends JFrame implements ActionListener {
 		if (prompt != null)
 			this.remove(prompt);
 		if (evt.getSource() == addBook) {		
-			String authorInput = JOptionPane.showInputDialog(null, "Enter Author Name: ");
+			String authorInput = JOptionPane.showInputDialog(null, "Enter Author: ");
 			String title = JOptionPane.showInputDialog(null, "Enter Title: ");
 			String format = JOptionPane.showInputDialog(null, "Enter Format: ");
 			String location = JOptionPane.showInputDialog(null, "Enter Location: ");
@@ -117,7 +111,7 @@ public class GUI extends JFrame implements ActionListener {
 		else if(evt.getSource() == addSong) {
 			String artistInput = JOptionPane.showInputDialog(null, "Enter Artist: ");
 			String title = JOptionPane.showInputDialog(null, "Enter Title: ");
-			String genre = JOptionPane.showInputDialog(null, "Enter Title: ");
+			String genre = JOptionPane.showInputDialog(null, "Enter Genre: ");
 			String format = JOptionPane.showInputDialog(null, "Enter Format: ");
 			String location = JOptionPane.showInputDialog(null, "Enter Location: ");
 			String notes = JOptionPane.showInputDialog(null, "Enter Notes: ");
@@ -152,12 +146,10 @@ public class GUI extends JFrame implements ActionListener {
 		}
 		else if(evt.getSource() == displayAll) {
 			JOptionPane.showMessageDialog(null, Main.printLibrary());
-			//Main.printLibrary();
 		}	
 		else if(evt.getSource() == delete) {
 			
 		}
 		validate();
-
 	}
 }
