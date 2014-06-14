@@ -7,13 +7,13 @@ import java.io.Serializable;//JB
  */
 public class Library implements Serializable {
 
-	private ArrayList<Media> library; 
+	private ArrayList<Media> library;
 
 	/**
 	 * default constructor JP
 	 */
 	public Library() {
-		library = new ArrayList<Media>();
+
 	}
 
 	/**
@@ -44,33 +44,34 @@ public class Library implements Serializable {
 						}
 						else
 							bookList.add(library.get(i));
-
 					}
 			}
 		}
-		
+
 		ArrayList<Media> songList = new ArrayList<Media>();
-		for (int i=0; i < library.size(); i++)
-			if (library.get(i) instanceof Song)
+		for (int i2=0; i2 < library.size(); i2++)
+		{
+			if (library.get(i2) instanceof Song)
 			{
 				if (songList.size() == 0) 
-				songList.add(library.get(i));
+				songList.add(library.get(i2));
 			else
-				for (int j = 0; j < songList.size(); j++)
+				for (int j2 = 0; j2 < songList.size(); j2++)
 				{
-					if ((library.get(i).getTitle().compareTo(songList.get(j).getTitle())) < 0)
+					if ((library.get(i2).getTitle().compareTo(songList.get(j2).getTitle())) < 0)
 					{
-						songList.add(j, library.get(i));
+						songList.add(j2, library.get(i2));
 						break;
 					}
 						else
-							songList.add(library.get(i));
+							songList.add(library.get(i2));
 
 				}
 
 			}
+		}	
 
-
+		
 		ArrayList<Media> videoList = new ArrayList<Media>();
 		for (int i3=0; i3 < library.size(); i3++)
 		{
@@ -85,7 +86,6 @@ public class Library implements Serializable {
 						{
 							videoList.add(j3, library.get(i3));
 							break;
-							
 						}
 						else
 							videoList.add(library.get(i3));
@@ -110,9 +110,12 @@ public class Library implements Serializable {
 						}
 						else
 							videoGameList.add(library.get(i4));
+
 					}
+
 			}
 		}
+
 
 		ArrayList<Media> sortedArrayList = new ArrayList<Media>();
 			sortedArrayList.addAll(bookList);
@@ -121,11 +124,37 @@ public class Library implements Serializable {
 			sortedArrayList.addAll(videoGameList);
 
 		library = sortedArrayList;
-	}
+		}
+
+
 	/**
-	 * searches within the Book media type
-	 * @return
+	 * takes in the media type as a parameter and searches the list of that same
+	 * media type JP
 	 */
+	// public Media retrieveByMedia(Media m){
+	// int i= 0;
+	// Media curMedia;
+	// for (i = 0; i < library.size(); i++){
+	// curMedia = library.get(i);
+	// if(curMedia == title){
+	// break;
+	// }
+	// }
+	// return curMedia;
+
+	public String retriveByMedia(String type){
+
+		if (type == "books")
+			searchInBooks();
+		else if (type == "songs")
+			searchInSongs();
+		else if (type == "videos")
+			searchInVideos();
+		else if (type == "video games")
+			searchInVideogames();
+		return null;
+	}
+
 	public String searchInBooks() {
 		ArrayList<Media> bookList = new ArrayList<Media>();
 		for (int i = 0; i < library.size(); i++) {
@@ -136,10 +165,7 @@ public class Library implements Serializable {
 
 		return bookList.toString();
 	}
-	/**
-	 * searches within the song media type
-	 * @return
-	 */
+
 	public String searchInSongs() {
 		ArrayList<Media> songList = new ArrayList<Media>();
 		for (int i = 0; i < library.size(); i++) {
@@ -149,10 +175,7 @@ public class Library implements Serializable {
 		}
 		return songList.toString();
 	}
-	/**
-	 * searches with in the video media type
-	 * @return
-	 */
+
 	public String searchInVideos() {
 		ArrayList<Media> videoList = new ArrayList<Media>();
 		for (int i = 0; i < library.size(); i++) {
@@ -162,10 +185,7 @@ public class Library implements Serializable {
 		}
 		return videoList.toString();
 	}
-	/**
-	 * searches within the videogame media type
-	 * @return
-	 */
+
 	public String searchInVideogames() {
 		ArrayList<Media> videoGameList = new ArrayList<Media>();
 		for (int i = 0; i < library.size(); i++) {
@@ -175,22 +195,7 @@ public class Library implements Serializable {
 		}
 		return videoGameList.toString();
 	}
-	/**
-	 * retrieves a media type according to the media type
-	 * that was sent in through the parameter
-	 */
-	/** 
-	public String retriveByMedia(String type){
-		if (type == "book" || type == "Book")
-				searchInBooks();
-		else if (type == "song" || type == "Song")
-			searchInSongs();
-		else if (type == "video" || type == "Video")
-			searchInVideos();
-		else if (type == "video game" || type == Video Game)
-			searchInVideogames();
-	}
-	*/
+
 	/**
 	 * takes in the title as a parameter and searches the list of that same
 	 * title JP
@@ -228,6 +233,7 @@ public class Library implements Serializable {
 		}
 		library.remove(i);
 	}
+
 	/**
 	 * Returns a string containing all the data stored in this object JP
 	 */
@@ -237,5 +243,4 @@ public class Library implements Serializable {
 			result += " " + library.get(i);
 		return result;
 	}
-	
 }

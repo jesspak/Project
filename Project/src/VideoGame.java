@@ -14,15 +14,15 @@ public class VideoGame extends Media implements Serializable{ //JB JP
 	 */
 	public VideoGame(){
 		super();
-		
+
 	}
 	/**
 	 * parameterized constructor JP
 	 */
+
 	public VideoGame(String newTitle, String newFormat,
 			String newLocation, String newNotes){
 		super(newTitle, newFormat, newLocation, newNotes);
-		
 	}
 
 	/**

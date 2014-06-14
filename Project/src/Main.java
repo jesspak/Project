@@ -57,8 +57,24 @@ public class Main {// JP
 		return result;
 	}
 	public static void main(String[] args) {// JP
-		
-		
+
+		Book newBook = new Book("Suzanne Collins", "The Hunger Games", "Bluray", "The floor", "Blatant ripoff of Japanese idea but way better");// JP
+		ourLibrary.add(newBook);
+		System.out.println(ourLibrary);// JP
+
+		Song newSong = new Song();// JP
+		System.out.println(newSong);// JP
+
+		Video newVideo = new Video();// JP
+		newVideo.setStar(" ");// JP
+		System.out.println(newVideo);// JP
+
+		VideoGame newVideoGame = new VideoGame();// JP
+		System.out.println(newVideoGame);// JP
+
+		ourLibrary.sort();
+
+		//compare 2 Media objects, says Elaine
 	}
 
 }
