@@ -42,7 +42,7 @@ public class Library implements Serializable{
 									
 									}
 								}
-							bookList.add(j, library.get(i));
+			bookList.add(j, library.get(i));
 								
 						}
 					}
@@ -79,7 +79,7 @@ public class Library implements Serializable{
 		library = sortedArrayList;
 
 		}
-	}
+	
 	
 
 	/**
