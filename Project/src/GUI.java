@@ -84,15 +84,6 @@ public class GUI extends JFrame implements ActionListener {
 		this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
 		this.setVisible(true);
 	}
-<<<<<<< HEAD
-	
-	public void print(){
-		System.out.print(library);
-		/*
-		*TB
-		*/
-	}
-	
 =======
 
 >>>>>>> origin/jess
