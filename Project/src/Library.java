@@ -35,13 +35,7 @@ public class Library implements Serializable{
 				else 
 					for (int j = 0; j < bookList.size(); j++){
 						if ((library.get(i).getTitle().compareTo(bookList.get(j).getTitle())) < 0){
-							for (int g = bookList.size(); g > j; g--){
-								if (g >= j){
 
-										bookList.get(g) = bookList.size(bookList.size() - 1, g);
-									
-									}
-								}
 			bookList.add(j, library.get(i));
 								
 						}
@@ -52,21 +46,44 @@ public class Library implements Serializable{
 		ArrayList<Media> songList = new ArrayList<Media>();
 		for (int i2=0; i2 < library.size(); i2++){
 			if (library.get(i2) instanceof Song){
+				if (songList.size() == 0) 
 				songList.add(library.get(i2));
+			else
+				for (int j2 = 0; j2 < songList.size(); j2++){
+					if ((library.get(i2).getTitle().compareTo(songList.get(j2).getTitle())) < 0){
+
+		songList.add(j2, library.get(i2));
+				
+			
+					
 			}
 		}
 
 		ArrayList<Media> videoList = new ArrayList<Media>();
 		for (int i3=0; i3 < library.size(); i3++){
 			if(library.get(i3) instanceof Video){
-				videoList.add(library.get(i3));
+				if (videoList.size() == 0) 
+					videoList.add(library.get(i3));
+				else
+					for (int j3 = 0; j3 < videoList.size(); j3++){
+						if ((library.get(i2).getTitle().compareTo(videoList.get(j3).getTitle())) < 0){
+
+			videoList.add(j3, library.get(i3));
+			}
 			}
 		}
 
 		ArrayList<Media> videoGameList = new ArrayList<Media>();
 		for (int i4=0; i4< library.size(); i4++){
 			if(library.get(i4)  instanceof VideoGame){
-				videoGameList.add(library.get(i4));
+				if (videoGameList.size() == 0) 
+					videoGameList.add(library.get(i2));
+				else
+					for (int j4 = 0; j4 < videoGameList.size(); j4++){
+						if ((library.get(i4).getTitle().compareTo(videoGameList.get(j4).getTitle())) < 0){
+
+			videoGameList.add(j4, library.get(i4));
+			}
 			}
 		}
 		
@@ -77,7 +94,7 @@ public class Library implements Serializable{
 			sortedArrayList.addAll(videoGameList);
 			
 		library = sortedArrayList;
-
+		}
 		}
 	
 	
