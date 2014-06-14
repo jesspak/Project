@@ -54,7 +54,8 @@ public class Library implements Serializable {
 				for (int j2 = 0; j2 < songList.size(); j2++){
 					if ((library.get(i2).getTitle().compareTo(songList.get(j2).getTitle())) < 0){
 						break;
-		songList.add(j2, library.get(i2));}
+		songList.add(j2, library.get(i2));
+		}
 						else
 							songList.add(library.get(i));
 				
@@ -74,6 +75,9 @@ public class Library implements Serializable {
 							break;
 			videoList.add(j3, library.get(i3));
 			}
+						else
+							videoList.add(library.get(i));
+			}
 			}
 		}
 
@@ -87,6 +91,9 @@ public class Library implements Serializable {
 						if ((library.get(i4).getTitle().compareTo(videoGameList.get(j4).getTitle())) < 0){
 							break;
 				videoGameList.add(j4, library.get(i4));
+				}
+						else
+							videoGameList.add(library.get(i));
 
 						}
 
@@ -102,8 +109,8 @@ public class Library implements Serializable {
 			
 		library = sortedArrayList;
 		}
-		}
-		}
+		
+		
 	/**
 	 * takes in the media type as a parameter and searches the list of that same
 	 * media type JP
