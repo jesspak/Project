@@ -45,8 +45,8 @@ public class Library implements Serializable {
 			}}
 			
 
-		ArrayList<Media> songList = new ArrayList<Media>(){{
-		for (int i2=0; i2 < library.size(); i2++){
+		ArrayList<Media> songList = new ArrayList<Media>();{
+		for (int i2=0; i2 < library.size(); i2++)
 			if (library.get(i2) instanceof Song){
 				if (songList.size() == 0) 
 				songList.add(library.get(i2));
@@ -57,7 +57,7 @@ public class Library implements Serializable {
 		songList.add(j2, library.get(i2));
 		}
 						else
-							songList.add(library.get(i));
+							songList.add(library.get(i2));
 				
 				}
 					
@@ -71,12 +71,12 @@ public class Library implements Serializable {
 					videoList.add(library.get(i3));
 				else
 					for (int j3 = 0; j3 < videoList.size(); j3++){
-						if ((library.get(i2).getTitle().compareTo(videoList.get(j3).getTitle())) < 0){
+						if ((library.get(i3).getTitle().compareTo(videoList.get(j3).getTitle())) < 0){
 							break;
 			videoList.add(j3, library.get(i3));
 			}
 						else
-							videoList.add(library.get(i));
+							videoList.add(library.get(i3));
 			}
 			}
 		}
@@ -85,7 +85,7 @@ public class Library implements Serializable {
 		for (int i4=0; i4< library.size(); i4++){
 			if(library.get(i4)  instanceof VideoGame){
 				if (videoGameList.size() == 0) 
-					videoGameList.add(library.get(i2));
+					videoGameList.add(library.get(i4));
 				else
 					for (int j4 = 0; j4 < videoGameList.size(); j4++){
 						if ((library.get(i4).getTitle().compareTo(videoGameList.get(j4).getTitle())) < 0){
@@ -93,13 +93,13 @@ public class Library implements Serializable {
 				videoGameList.add(j4, library.get(i4));
 				}
 						else
-							videoGameList.add(library.get(i));
+							videoGameList.add(library.get(i4));
 
 						}
 
 			}
 			}
-		}
+		
 		
 		ArrayList<Media> sortedArrayList = new ArrayList<Media>();
 			sortedArrayList.addAll(bookList);
@@ -125,6 +125,18 @@ public class Library implements Serializable {
 	// }
 	// }
 	// return curMedia;
+		
+	public String retriveByMedia(String type){
+	
+		if (type == "books")
+			searchInBooks();
+		else if (type == "songs")
+			searchInSongs();
+		else if (type == "videos")
+			searchInVideos();
+		else if (type == "video games")
+			searchInVideogames();
+	}
 
 	public String searchInBooks() {
 		ArrayList<Media> bookList = new ArrayList<Media>();
