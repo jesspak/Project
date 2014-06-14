@@ -19,11 +19,7 @@ public class VideoGame extends Media implements Serializable{ //JB JP
 	/**
 	 * parameterized constructor JP
 	 */
-<<<<<<< HEAD
-	public VideoGame(String title, String format,
-			String location, String notes){
-		super(title, format, location, notes);
-=======
+
 	public VideoGame(String newTitle, String newFormat,
 			String newLocation, String newNotes){
 		super(newTitle, newFormat, newLocation, newNotes);
