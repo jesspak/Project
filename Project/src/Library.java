@@ -1,30 +1,30 @@
 import java.util.ArrayList; // JB
 import java.io.Serializable;//JB
+
 /**
- * one object of this class creates a library and has methods 
- * that adds, prints, deletes, and retrieves the data.
+ * one object of this class creates a library and has methods that adds, prints,
+ * deletes, and retrieves the data.
  */
-public class Library implements Serializable{
-	
+public class Library implements Serializable {
+
 	private ArrayList<Media> library;
+
 	/**
-	 * default constructor
-	 *JP
+	 * default constructor JP
 	 */
-	public Library(){
-		
+	public Library() {
+
 	}
+
 	/**
-	 * adds a book to the library
-	 * JB
+	 * adds a book to the library JB
 	 */
-	public void add(Media m){
+	public void add(Media m) {
 		library.add(m);
 	}
-	
+
 	/**
-	 * sorts the all the entries in the list
-	 * JP
+	 * sorts the all the entries in the list JP
 	 */
 	public void sort(){
 		ArrayList<Media> bookList = new ArrayList<Media>();
@@ -35,15 +35,17 @@ public class Library implements Serializable{
 				else 
 					for (int j = 0; j < bookList.size(); j++){
 						if ((library.get(i).getTitle().compareTo(bookList.get(j).getTitle())) < 0){
-
-			bookList.add(j, library.get(i));
+							break;
+			bookList.add(j, library.get(i));}
+						else
+							bookList.add(library.get(i));
 								
 						}
 					}
 			}}
 			
 
-		ArrayList<Media> songList = new ArrayList<Media>();
+		ArrayList<Media> songList = new ArrayList<Media>(){{
 		for (int i2=0; i2 < library.size(); i2++){
 			if (library.get(i2) instanceof Song){
 				if (songList.size() == 0) 
@@ -51,10 +53,12 @@ public class Library implements Serializable{
 			else
 				for (int j2 = 0; j2 < songList.size(); j2++){
 					if ((library.get(i2).getTitle().compareTo(songList.get(j2).getTitle())) < 0){
-
-		songList.add(j2, library.get(i2));
+						break;
+		songList.add(j2, library.get(i2));}
+						else
+							songList.add(library.get(i));
 				
-			
+				}
 					
 			}
 		}
@@ -67,7 +71,7 @@ public class Library implements Serializable{
 				else
 					for (int j3 = 0; j3 < videoList.size(); j3++){
 						if ((library.get(i2).getTitle().compareTo(videoList.get(j3).getTitle())) < 0){
-
+							break;
 			videoList.add(j3, library.get(i3));
 			}
 			}
@@ -81,8 +85,11 @@ public class Library implements Serializable{
 				else
 					for (int j4 = 0; j4 < videoGameList.size(); j4++){
 						if ((library.get(i4).getTitle().compareTo(videoGameList.get(j4).getTitle())) < 0){
+							break;
+				videoGameList.add(j4, library.get(i4));
 
-			videoGameList.add(j4, library.get(i4));
+						}
+
 			}
 			}
 		}
@@ -96,113 +103,109 @@ public class Library implements Serializable{
 		library = sortedArrayList;
 		}
 		}
-	
-	
 
 	/**
-	 * takes in the media type as a parameter and searches
-	 * the list of that same media type
-	 * JP
+	 * takes in the media type as a parameter and searches the list of that same
+	 * media type JP
 	 */
 	// public Media retrieveByMedia(Media m){
-	// 	int i= 0;
-	// 	Media curMedia;
-	// 	for (i = 0; i < library.size(); i++){
-	// 		curMedia = library.get(i);
-	// 		if(curMedia == title){
-	// 			break;
-	// 		}
-	// 	}
-	// 	return curMedia;
-	
-	
-	public String retrieveByBook(){
+	// int i= 0;
+	// Media curMedia;
+	// for (i = 0; i < library.size(); i++){
+	// curMedia = library.get(i);
+	// if(curMedia == title){
+	// break;
+	// }
+	// }
+	// return curMedia;
+
+	public String searchInBooks() {
 		ArrayList<Media> bookList = new ArrayList<Media>();
-		for (int i=0; i< library.size(); i++){
-			if(library.get(i) instanceof Book){
+		for (int i = 0; i < library.size(); i++) {
+			if (library.get(i) instanceof Book) {
 				bookList.add(library.get(i));
 			}
 		}
-		
-		
+
 		return toString(bookList);
 	}
-	
-	public String retrieveBySong(){
+
+	public String searchInSongs() {
 		ArrayList<Media> songList = new ArrayList<Media>();
-		for (int i=0; i< library.size(); i++){
-			if(library.get(i) instanceof Song){
+		for (int i = 0; i < library.size(); i++) {
+			if (library.get(i) instanceof Song) {
 				songList.add(library.get(i));
 			}
 		}
 		return toString(songList);
 	}
-	
-	public String retrieveByVideo(){
+
+	public String searchInVideos() {
 		ArrayList<Media> videoList = new ArrayList<Media>();
-		for (int i=0; i< library.size(); i++){
-			if(library.get(i) instanceof Video){
+		for (int i = 0; i < library.size(); i++) {
+			if (library.get(i) instanceof Video) {
 				videoList.add(library.get(i));
 			}
 		}
 		return toString(videoList);
 	}
-	
-	public String retrieveByVideoGame(){
+
+	public String searchInVideogames() {
 		ArrayList<Media> videoGameList = new ArrayList<Media>();
-		for (int i=0; i< library.size(); i++){
-			if(library.get(i) instanceof VideoGame){
+		for (int i = 0; i < library.size(); i++) {
+			if (library.get(i) instanceof VideoGame) {
 				videoGameList.add(library.get(i));
 			}
 		}
 		return toString(videoGameList);
 	}
-	
+
 	/**
-	 * takes in the title as a parameter and searches
-	 * the list of that same title
-	 * JP
+	 * takes in the title as a parameter and searches the list of that same
+	 * title JP
 	 */
-	public String retrieveByTitle(String title){
+	public String retrieveByTitle(String title) {
 		String curMedia = "";
 		int i = 0;
-		for (i = 0; i < library.size(); i++){
+		for (i = 0; i < library.size(); i++) {
 			curMedia = library.get(i).getTitle();
-			if(curMedia == title){
+			if (curMedia == title) {
 				break;
 			}
 		}
 		return curMedia;
 	}
+
 	/**
-	 * takes in the media type and title as a parameter and searches
-	 * the list of that same media type and title
-	 * JP
+	 * takes in the media type and title as a parameter and searches the list of
+	 * that same media type and title JP
 	 */
-	public Media retrieveByTitleAndMedia(Media tm){
-		return new Media();//JB
+	public Media retrieveByTitleAndMedia(Media tm) {
+		return new Media();// JB
 	}
+
 	/**
 	 * deletes an entry from an ArrayList JB
 	 */
-	public void deleteEntry(Media title){ // JP
+	public void deleteEntry(Media title) { // JP
 		int i = 0;
-		for (i = 0; i < library.size(); i++){
+		for (i = 0; i < library.size(); i++) {
 			Media curMedia = library.get(i);
-			if(curMedia == title){
+			if (curMedia == title) {
 				break;
 			}
 		}
 		library.remove(i);
 	}
+
 	/**
 	 * 
 	 */
-	public String toString(ArrayList<Media> list){
+	public String toString(ArrayList<Media> list) {
 		String finalList = "";
 		for (int i = 0; i < list.size(); i++)
-		finalList += list.get(i);
+			finalList += list.get(i);
 		return finalList;
 	}
-	
-		}
+
+		}}
