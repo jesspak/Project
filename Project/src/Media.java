@@ -29,19 +29,7 @@ public class Media implements Serializable, Cloneable  { //JB,JP
 	 * @param location
 	 * @param notes
 	 */
-<<<<<<< HEAD
 
-	public Media(String title, String format, // JB
-			String location, String notes) {// JP
-			
-		title = this.title;
-		format = this.format;
-		location = this.location;
-		notes = this.notes;
-	}
-	
-
-=======
 	public Media(String newTitle, String newFormat, // JB
 			String newLocation, String newNotes) {// JP
 		title = newTitle;
@@ -80,11 +68,7 @@ public class Media implements Serializable, Cloneable  { //JB,JP
 	 * @param newTitle
 	 *            //JB
 	 */
-<<<<<<< HEAD
 
-	public void setTitle(String title) {// JB
-		this.title = title;// JB
-=======
 	public void setTitle(String newTitle) {// JB
 		title = newTitle;// JB
 >>>>>>> origin/jess
@@ -95,12 +79,7 @@ public class Media implements Serializable, Cloneable  { //JB,JP
 	 * @param newFormat
 	 *            //JP
 	 */
-<<<<<<< HEAD
 
-	public void setFormat(String format) {// JP
-		this.format = format;
-
-=======
 	public void setFormat(String newFormat) {// JP
 		format = newFormat;// JP
 	}
@@ -110,12 +89,7 @@ public class Media implements Serializable, Cloneable  { //JB,JP
 	 * 
 	 * @param newLocation
 	 */
-<<<<<<< HEAD
-
-	public void setLocation(String location) {// JP
-		this.location = location;// JP
-=======
-	public void setLocation(String newLocation) {// JP
+public void setLocation(String newLocation) {// JP
 		location = newLocation;// JP
 >>>>>>> origin/jess
 	}
@@ -124,11 +98,7 @@ public class Media implements Serializable, Cloneable  { //JB,JP
 	 * 
 	 * @param newNotes
 	 */
-<<<<<<< HEAD
 
-	public void setNotes(String notes) {// JP
-		this.notes = notes;// JP
-=======
 	public void setNotes(String newNotes) {// JP
 		notes = newNotes;// JP
 >>>>>>> origin/jess
