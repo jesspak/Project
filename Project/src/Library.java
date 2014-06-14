@@ -4,7 +4,7 @@ import java.io.Serializable;//JB
  * one object of this class creates a library and has methods 
  * that adds, prints, deletes, and retrieves the data.
  */
-public class Library implements Serializable implements Comparable{
+public class Library implements Serializable{
 	
 	private ArrayList<Media> library;
 	/**
@@ -29,41 +29,44 @@ public class Library implements Serializable implements Comparable{
 	public void sort(){
 		ArrayList<Media> bookList = new ArrayList<Media>();
 		for (int i=0; i< library.size(); i++){
-			if (library.get(i) instaceof Book.getClass()){
+			if (library.get(i) instanceof Book){
 				if (bookList.size() == 0) 
-					bookList.add(library.get(i);
+					bookList.add(library.get(i));
 				else 
 					for (int j = 0; j < bookList.size(); j++){
-						if ((library.get(i).getTitle.compareTo(bookList(j).getTitle)) < 0){
-							for (int g = 0; g < bookList.size(); g++){
-								if (bookList.get(int g) >= bookList.get(j)){
-									bookList.get(g + 1) = bookList.get(g);
+						if ((library.get(i).getTitle().compareTo(bookList.get(j).getTitle())) < 0){
+							for (int g = bookList.size(); g > j; g--){
+								if (g >= j){
+
+										bookList.get(g) = bookList.size(bookList.size() - 1, g);
+									
+									}
 								}
-							bookList.add(j, library.get(i))
+							bookList.add(j, library.get(i));
 								
 						}
 					}
-			}
-		}
+			}}
+			
 
 		ArrayList<Media> songList = new ArrayList<Media>();
-		for (int i=0; i< library.size(); i++){
-			if(library.get(i) instaceof Song.getClass()){
-				sonList.add(library.get(i));
+		for (int i2=0; i2 < library.size(); i2++){
+			if (library.get(i2) instanceof Song){
+				songList.add(library.get(i2));
 			}
 		}
 
 		ArrayList<Media> videoList = new ArrayList<Media>();
-		for (int i=0; i< library.size(); i++){
-			if(library.get(i) instaceof Video.getClass()){
-				videoList.add(library.get(i));
+		for (int i3=0; i3 < library.size(); i3++){
+			if(library.get(i3) instanceof Video){
+				videoList.add(library.get(i3));
 			}
 		}
 
 		ArrayList<Media> videoGameList = new ArrayList<Media>();
-		for (int i=0; i< library.size(); i++){
-			if(library.get(i) instaceof VideoGame.getClass()){
-				videoGameList.add(library.get(i));
+		for (int i4=0; i4< library.size(); i4++){
+			if(library.get(i4)  instanceof VideoGame){
+				videoGameList.add(library.get(i4));
 			}
 		}
 		
@@ -72,10 +75,12 @@ public class Library implements Serializable implements Comparable{
 			sortedArrayList.addAll(songList);
 			sortedArrayList.addAll(videoList);
 			sortedArrayList.addAll(videoGameList);
+			
+		library = sortedArrayList;
 
-
-
+		}
 	}
+	
 
 	/**
 	 * takes in the media type as a parameter and searches
@@ -92,46 +97,48 @@ public class Library implements Serializable implements Comparable{
 	// 		}
 	// 	}
 	// 	return curMedia;
-	}
 	
-	public Media retrieveByBook(){
-		Arraylist<Media> bookList = new ArrayList<Media>();
+	
+	public String retrieveByBook(){
+		ArrayList<Media> bookList = new ArrayList<Media>();
 		for (int i=0; i< library.size(); i++){
-			if(library.get(i) instaceof Book.getClass()){
+			if(library.get(i) instanceof Book){
 				bookList.add(library.get(i));
 			}
 		}
-		return bookList;
+		
+		
+		return toString(bookList);
 	}
 	
-	public Media retrieveBySong(){
-		Arraylist<Media> songList = new ArrayList<Media>();
+	public String retrieveBySong(){
+		ArrayList<Media> songList = new ArrayList<Media>();
 		for (int i=0; i< library.size(); i++){
-			if(library.get(i) instaceof Song.getClass()){
+			if(library.get(i) instanceof Song){
 				songList.add(library.get(i));
 			}
 		}
-		return songList;
+		return toString(songList);
 	}
 	
-	public Media retrieveByVideo(){
+	public String retrieveByVideo(){
 		ArrayList<Media> videoList = new ArrayList<Media>();
 		for (int i=0; i< library.size(); i++){
-			if(library.get(i) instaceof Video.getClass()){
+			if(library.get(i) instanceof Video){
 				videoList.add(library.get(i));
 			}
 		}
-		return videoList;
+		return toString(videoList);
 	}
 	
-	public Media retrieveByVideoGame(){
+	public String retrieveByVideoGame(){
 		ArrayList<Media> videoGameList = new ArrayList<Media>();
 		for (int i=0; i< library.size(); i++){
-			if(library.get(i) instaceof VideoGame.getClass()){
+			if(library.get(i) instanceof VideoGame){
 				videoGameList.add(library.get(i));
 			}
 		}
-		return videoGameList;
+		return toString(videoGameList);
 	}
 	
 	/**
@@ -139,15 +146,16 @@ public class Library implements Serializable implements Comparable{
 	 * the list of that same title
 	 * JP
 	 */
-	public Media retrieveByTitle(Media title){
+	public String retrieveByTitle(String title){
+		String curMedia;
 		int i = 0;
 		for (i = 0; i < library.size(); i++){
-			Media curMedia = library.get(i);
+			curMedia = library.get(i).getTitle();
 			if(curMedia == title){
 				break;
 			}
 		}
-		return library(i);
+		return curMedia;
 	}
 	/**
 	 * takes in the media type and title as a parameter and searches
@@ -173,11 +181,11 @@ public class Library implements Serializable implements Comparable{
 	/**
 	 * 
 	 */
-	public String toString(){
+	public String toString(ArrayList<Media> list){
 		String finalList = "";
-		for (int i = 0; i < sortedArrayList.size(); i++)
-		finalList += sortedArrayList(i);
+		for (int i = 0; i < list.size(); i++)
+		finalList += list.get(i);
 		return finalList;
 	}
 	
-}
+		}
