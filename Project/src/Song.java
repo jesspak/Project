@@ -14,11 +14,18 @@ public class Song extends Media implements Serializable {// JB
 	 * default constructor//JP
 	 */
 
+<<<<<<< HEAD
 	public Song(artist, genre, title, format, location, notes) {// JP
 		super(title, format, location, notes);// JP
 		
 		setArtist(artist);
 		setGenre(genre);
+=======
+	public Song() {// JP
+		super();// JP
+		artist = "Artist";
+		genre = "Genre";
+>>>>>>> origin/jess
 	}
 
 	/**
@@ -27,7 +34,9 @@ public class Song extends Media implements Serializable {// JB
 
 	public Song(String newArtist, String newTitle, String newGenre,
 			String newFormat, String newLocation, String newNotes) {// JP
-		super();// JP
+		super(newTitle, newFormat, newLocation, newNotes);// JP
+		artist = newArtist;
+		genre = newGenre;
 	}
 
 	/**
@@ -52,7 +61,7 @@ public class Song extends Media implements Serializable {// JB
 	 */
 
 	public void setArtist(String newArtist) {// JP
-		artist = "Song Artist";// JP
+		artist = newArtist;// JP
 	}
 
 	/**
@@ -61,15 +70,15 @@ public class Song extends Media implements Serializable {// JB
 	 */
 
 	public void setGenre(String newGenre) {// JP
-		genre = "Song Genre";// JP
+		genre = newGenre;// JP
 	}
 
 	/**
 	 * Returns a String containing all the data stored //JP in this object.
 	 */
 	public String toString() {// JB
-		return "Song:" + "\n" + this.getArtist() + "\n"// JB
-				+ this.getGenre() + "\n" + super.toString();// JB
+		return "\t" + "Song:" + "\n" + "Artist: " + this.getArtist() + "\n"// JB
+				+ "Genre: " + this.getGenre() + "\n" + super.toString();// JB
 	}
 
 }
