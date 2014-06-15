@@ -14,14 +14,15 @@ public class VideoGame extends Media implements Serializable{ //JB JP
 	 */
 	public VideoGame(){
 		super();
+
 	}
 	/**
 	 * parameterized constructor JP
 	 */
-	public VideoGame(String title, String format,
-			String location, String notes){
-		super(title, format, location, notes);
-		
+
+	public VideoGame(String newTitle, String newFormat,
+			String newLocation, String newNotes){
+		super(newTitle, newFormat, newLocation, newNotes);
 	}
 
 	/**
@@ -29,6 +30,6 @@ public class VideoGame extends Media implements Serializable{ //JB JP
 	 */
 
 	public String toString() {// JB
-		return "Video Game:" + "\n" + super.toString();// JB
+		return "\t"+ "Video Game:" + "\n" + super.toString();// JB
 	}
 }
