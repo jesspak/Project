@@ -238,9 +238,11 @@ public class Library implements Serializable {
 	 * Returns a string containing all the data stored in this object JP
 	 */
 	public String toString(){
-		String result = " ";
-		for(int i = 0; i < library.size(); i++)
-			result += " " + library.get(i);
-		return result;
+		String result = "+";
+	    for (int i = 0; i < library.size(); i++) {
+	        result += " " + library.get(i);
+	    }
+	    return result;
 	}
 }
+

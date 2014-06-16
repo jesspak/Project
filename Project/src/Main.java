@@ -53,58 +53,28 @@ public class Main {// JP
 	 * @return
 	 */
 	public static String printLibrary(){
-		String result = ourLibrary.toString();
-		return result;
+		return ourLibrary.toString();
 	}
 	public static void main(String[] args) {// JP
 
-		Book newBook = new Book("Suzanne Collins", "The Hunger Games", "Bluray", "The floor", "Blatant ripoff of Japanese idea but way better");// JP
-		ourLibrary.add(newBook);
-		System.out.println(ourLibrary);// JP
-
-		Song newSong = new Song();// JP
-		System.out.println(newSong);// JP
-
-		Video newVideo = new Video();// JP
-		newVideo.setStar(" ");// JP
-		System.out.println(newVideo);// JP
-
-		VideoGame newVideoGame = new VideoGame();// JP
-		System.out.println(newVideoGame);// JP
-
-		ourLibrary.sort();
+//		Book newBook = new Book("Suzanne Collins", "The Hunger Games", "Bluray", "The floor", "Blatant ripoff of Japanese idea but way better");// JP
+//		ourLibrary.add(newBook);
+//		System.out.println(ourLibrary);// JP
+//
+//		Song newSong = new Song();// JP
+//		System.out.println(newSong);// JP
+//
+//		Video newVideo = new Video();// JP
+//		newVideo.setStar(" ");// JP
+//		System.out.println(newVideo);// JP
+//
+//		VideoGame newVideoGame = new VideoGame();// JP
+//		System.out.println(newVideoGame);// JP
+//
+//		ourLibrary.sort();
 
 		//compare 2 Media objects, says Elaine
 	}
 
 }
 
-/*
-Book:
-Book Author
-Title
-Format
-Location
-Notes
-
-Song:
-Song Artist
-Song Genre
-Title
-Format
-Location
-Notes
-
-Video:
-Video Star
-Title
-Format
-Location
-Notes
-
-Video Game:
-Title
-Format
-Location
-Notes
-*/
