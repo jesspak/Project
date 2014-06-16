@@ -109,12 +109,12 @@ public void setLocation(String newLocation) {// JP
 	/**
 	 * Compares entries to allow them to be sorted.//JB
 	 */
-//	public int compareTo(Media m) {// JB
-//		int compareQuantity = ((Media) compareTitle).getQuantity(); 
-//		 
-//		//ascending order
-//		return this.quantity - compareQuantity;
-//
-//	}
+	public int compareTo(Media m) {// JB
+		int compareQuantity = ((Media) compareTitle).getQuantity(); 
+		 
+		//ascending order
+		return this.quantity - compareQuantity;
+
+	}
 
 }
