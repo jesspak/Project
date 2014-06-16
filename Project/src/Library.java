@@ -28,43 +28,43 @@ public class Library implements Serializable {
 	 * Loads object ContactList from file and returns it to the variable.
 	 * @author TB
 	 */
-	public static Library loadFromDisk() {
-		Library library = null;
-		System.out.println("Checking for previously saved library.");
-		try {
-			FileInputStream inFile = new FileInputStream("library");
-			ObjectInputStream inObject = new ObjectInputStream(inFile);
-			library = (Library) inObject.readObject();
-			inFile.close();
-			inObject.close();
-			System.out.println("**Library found and loaded**\n");
-		} 
-		catch (IOException ioe) {
-			System.out.println("Error reading from the file: " + ioe.getMessage());
-		} 
-		catch (ClassNotFoundException cnfe) {
-			System.out.println("Error in casting to Library: " + cnfe);
-		}
-		return library;
-	}
-	
-	/**
-	 * Saves object Library to the file.
-	 * @author TB
-	 */
-	public static void saveToDisk(Media library) {
-		try {
-			FileOutputStream outFileStream = new FileOutputStream("library");
-			ObjectOutputStream outObjectStream= new ObjectOutputStream(outFileStream);
-			outObjectStream.writeObject(library);
-			outFileStream.close();
-			outObjectStream.close();
-			System.out.println("Entry successfully saved to file");
-		} 
-		catch (IOException anIOException) {   
-		    System.out.println(anIOException);
-		}
-	}
+//	public static Library loadFromDisk() {
+//		Library library = null;
+//		System.out.println("Checking for previously saved library.");
+//		try {
+//			FileInputStream inFile = new FileInputStream("library");
+//			ObjectInputStream inObject = new ObjectInputStream(inFile);
+//			library = (Library) inObject.readObject();
+//			inFile.close();
+//			inObject.close();
+//			System.out.println("**Library found and loaded**\n");
+//		} 
+//		catch (IOException ioe) {
+//			System.out.println("Error reading from the file: " + ioe.getMessage());
+//		} 
+//		catch (ClassNotFoundException cnfe) {
+//			System.out.println("Error in casting to Library: " + cnfe);
+//		}
+//		return library;
+//	}
+//	
+//	/**
+//	 * Saves object Library to the file.
+//	 * @author TB
+//	 */
+//	public static void saveToDisk(Media library) {
+//		try {
+//			FileOutputStream outFileStream = new FileOutputStream("library");
+//			ObjectOutputStream outObjectStream= new ObjectOutputStream(outFileStream);
+//			outObjectStream.writeObject(library);
+//			outFileStream.close();
+//			outObjectStream.close();
+//			System.out.println("Entry successfully saved to file");
+//		} 
+//		catch (IOException anIOException) {   
+//		    System.out.println(anIOException);
+//		}
+//	}
 
 	/**
 	 * adds a form of media to the library TB
@@ -72,7 +72,7 @@ public class Library implements Serializable {
 	public void add(Media m) {
 		library.add(m);
 		
-	    saveToDisk(m);
+//	    saveToDisk(m);
 	}
 
 	/**
@@ -194,6 +194,15 @@ public class Library implements Serializable {
 	// }
 	// return curMedia;
 
+	/**
+	 * prints all entries in library
+	 * @return library
+	 */
+	
+	public String printLibrary(){
+		return library.toString();
+	}
+	
 	public void retriveByMedia(String type){
 
 		if (type == "books")
