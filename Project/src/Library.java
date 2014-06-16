@@ -13,7 +13,7 @@ public class Library implements Serializable {
 	 * default constructor JP
 	 */
 	public Library() {
-
+		library = new ArrayList<Media>();
 	}
 
 	/**
@@ -238,7 +238,7 @@ public class Library implements Serializable {
 	 * Returns a string containing all the data stored in this object JP
 	 */
 	public String toString(){
-		String result = "+";
+		String result = " ";
 	    for (int i = 0; i < library.size(); i++) {
 	        result += " " + library.get(i);
 	    }
