@@ -5,7 +5,7 @@ import java.io.Serializable;
  * @author JessicaPak
  *
  */
-public class Media implements Serializable, Cloneable  { //JB,JP
+public class Media implements Serializable, Cloneable Comparable<Media> { //JB,JP
 	private String title; // JB
 	private String format; // JP
 	private String location; //JP
@@ -109,12 +109,14 @@ public void setLocation(String newLocation) {// JP
 	/**
 	 * Compares entries to allow them to be sorted.//JB
 	 */
-	public int compareTo(Media m) {// JB
-		int compareQuantity = ((Media) compareTitle).getQuantity(); 
-		 
-		//ascending order
-		return this.quantity - compareQuantity;
-
+	public int compareTo(Media m) {// TB
+		if (this.getSortOrder() < m.getSortOrder())
+			return -1;
+		else if (this.getSortOrder() > m.getSortOrder())
+			return (1);
+		else 
+			return 0;
+			
+		
 	}
-
 }
