@@ -6,9 +6,8 @@ import java.util.ArrayList;
  */
 
 public class Main {// JP
-	private static GUI gui = new GUI();//JB
-	private static final int LIBRARYSIZE = 100;
-	private static Library ourLibrary = new Library();//JB
+	private static GUI gui;//JB
+	private static Library ourLibrary;//JB
 	/**
 	 * gets user input from the view and sets its values to  
 	 * a new Book object and adds it to the library
@@ -55,25 +54,9 @@ public class Main {// JP
 	public static String printLibrary(){
 		return ourLibrary.toString();
 	}
-	public static void main(String[] args) {// JP
-
-//		Book newBook = new Book("Suzanne Collins", "The Hunger Games", "Bluray", "The floor", "Blatant ripoff of Japanese idea but way better");// JP
-//		ourLibrary.add(newBook);
-//		System.out.println(ourLibrary);// JP
-//
-//		Song newSong = new Song();// JP
-//		System.out.println(newSong);// JP
-//
-//		Video newVideo = new Video();// JP
-//		newVideo.setStar(" ");// JP
-//		System.out.println(newVideo);// JP
-//
-//		VideoGame newVideoGame = new VideoGame();// JP
-//		System.out.println(newVideoGame);// JP
-//
-//		ourLibrary.sort();
-
-		//compare 2 Media objects, says Elaine
+	public static void main(String[] args) {
+		gui = new GUI();
+		ourLibrary = new Library();
 	}
 
 }
