@@ -5,7 +5,7 @@ import java.io.Serializable;
  * @author JessicaPak
  *
  */
-public class Media implements Serializable, Cloneable Comparable<Media> { //JB,JP
+public class Media implements Serializable, Cloneable { //JB,JP
 	private String title; // JB
 	private String format; // JP
 	private String location; //JP
@@ -105,18 +105,55 @@ public void setLocation(String newLocation) {// JP
 				+ "Location: " + this.getLocation()// JB
 				+ "\n" + "Notes: " + this.getNotes() + "\n" + "\n";// JP
 	}
+	
+	
 
 	/**
-	 * Compares entries to allow them to be sorted.//JB
+	 * Compares entries to allow them to be sorted TB
 	 */
 	public int compareTo(Media m) {// TB
-		if (this.getSortOrder() < m.getSortOrder())
+		if (this instanceof Book && m instanceof Song || m instanceof Video || m instanceof VideoGame)
 			return -1;
-		else if (this.getSortOrder() > m.getSortOrder())
+		else if (this instanceof Song && m instanceof Book)
 			return (1);
-		else 
-			return 0;
-			
+		else if (this instanceof Song && m instanceof Video || m instanceof VideoGame)
+			return -1;
+		else if (this instanceof Video && m instanceof Book || m instanceof Song)
+			return 1;
+		else if (this instanceof Video && m instanceof VideoGame)
+			return -1;
+		else if (this instanceof VideoGame && m instanceof Book || m instanceof Song || m instanceof Book)
+			return 1;
+		else if (this instanceof Book && m instanceof Book || (this instanceof Song && m instanceof Song) || (this instanceof Video && m instanceof Video) || (this instanceof VideoGame && m instanceof VideoGame))
+			this.getTitle().compareTo(m.getTitle());
+		return 0;
+
 		
+		
+	
+		
+	}
+	
+//	public int compareTo(Media m){
+//		if (this.isInstanceOfClass(m)
+//		
+//	}
+	/**
+	 * tests whether object is instance of given class
+	 * @param mediaType
+	 * @return true or false
+	 */
+	public boolean isInstanceOfClass(String mediaType) {
+		if (mediaType == "Book" && this instanceof Book)
+			return true;
+		else if (mediaType == "Song" && this instanceof Song)
+			return true;
+		else if (mediaType == "Video" && this instanceof Video)
+			return true;
+		else if (mediaType == "Video Game" && this instanceof VideoGame)
+			return true;
+		else
+			return false;
+		// TODO Auto-generated method stub
 	}
 }
