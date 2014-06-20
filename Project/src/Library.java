@@ -12,7 +12,7 @@ import java.io.Serializable;//JB
  * one object of this class creates a library and has methods that adds, prints,
  * deletes, and retrieves the data.
  */
-public class Library implements Serializable {
+public class Library implements Serializable,  {
 	
 //	static File MasterDB_F = new File ("library.db");
 
@@ -131,15 +131,13 @@ public class Library implements Serializable {
 	 */
 
 	public String searchInBooks() {
-		ArrayList<Media> bookList = new ArrayList<Media>();
+		String result = "";
 		for (int i = 0; i < library.size(); i++) {
 			if (library.get(i) instanceof Book) {
-				return library.get(i).toString();
-//				bookList.add(library.get(i));
+				result += library.get(i).toString();
 			}
 		}
-
-//		return bookList.toString();
+		return result;
 	}
 	
 	/**
@@ -148,14 +146,13 @@ public class Library implements Serializable {
 	 */
 
 	public String searchInSongs() {
-//		ArrayList<Media> songList = new ArrayList<Media>();
+		String result = "";
 		for (int i = 0; i < library.size(); i++) {
 			if (library.get(i) instanceof Song) {
-				return library.get(i).toString();
-//				songList.add(library.get(i));
+				result += library.get(i).toString();
 			}
 		}
-//		return songList.toString();
+		return result;
 	}
 	
 	/**
@@ -164,14 +161,13 @@ public class Library implements Serializable {
 	 */
 
 	public String searchInVideos() {
-//		ArrayList<Media> videoList = new ArrayList<Media>();
+		String result = "";
 		for (int i = 0; i < library.size(); i++) {
 			if (library.get(i) instanceof Video) {
-				return library.get(i).toString();
-//				videoList.add(library.get(i));
+				result += library.get(i).toString();
 			}
 		}
-//		return videoList.toString();
+		return result;
 	}
 	
 	/**
@@ -180,14 +176,13 @@ public class Library implements Serializable {
 	 */
 
 	public String searchInVideogames() {
-//		ArrayList<Media> videoGameList = new ArrayList<Media>();
+		String result = "";
 		for (int i = 0; i < library.size(); i++) {
 			if (library.get(i) instanceof VideoGame) {
-				return library.get(i).toString();
-//				videoGameList.add(library.get(i));
+				result += library.get(i).toString();
 			}
 		}
-//		return videoGameList.toString();
+		return result;
 	}
 
 	/**
@@ -200,18 +195,29 @@ public class Library implements Serializable {
 		for (i = 0; i < library.size(); i++) {
 			curMedia = library.get(i).getTitle();
 			if (curMedia == title) {
-				return curMedia;
+				curMedia = library.get(i).toString();
 			}
 		}
+		return curMedia;
 		
 	}
 
 	/**
 	 * takes in the media type and title as a parameter and searches the list of
-	 * that same media type and title JP
+	 * that same media type and title TB
+	 * @param m
+	 * @return Media
 	 */
-	public Media retrieveByTitleAndMedia(Media tm) {
-		return new Media();// JB
+	public String retrieveByTitleAndMedia(String mediaType, String title) {
+		String curMedia = "";
+		int i = 0;
+		for (i = 0; i < library.size(); i++) {
+			curMedia = library.get(i).getTitle();
+			if (curMedia == title && library.get(i).isInstanceOfClass(mediaType)) {
+				curMedia = library.get(i).toString();
+			}
+		}
+		return curMedia;
 	}
 
 	/**
@@ -238,7 +244,12 @@ public class Library implements Serializable {
 		return result;
 	}
 
-	Collections.sort(library);
+	public void sort() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	Collections.sort(library, Media m);
 		
 	}
 
