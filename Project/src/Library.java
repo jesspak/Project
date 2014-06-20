@@ -12,7 +12,7 @@ import java.io.Serializable;//JB
  * one object of this class creates a library and has methods that adds, prints,
  * deletes, and retrieves the data.
  */
-public class Library implements Serializable,  {
+public class Library implements Serializable, Comparable  {
 	
 //	static File MasterDB_F = new File ("library.db");
 
@@ -213,7 +213,7 @@ public class Library implements Serializable,  {
 		int i = 0;
 		for (i = 0; i < library.size(); i++) {
 			curMedia = library.get(i).getTitle();
-			if (curMedia == title && library.get(i).isInstanceOfClass(mediaType)) {
+			if (curMedia == title && library.get(i).isInstanceOfClass(mediaType) == true) {
 				curMedia = library.get(i).toString();
 			}
 		}
@@ -244,12 +244,9 @@ public class Library implements Serializable,  {
 		return result;
 	}
 
-	public void sort() {
-		// TODO Auto-generated method stub
-		
-	}
 
-	Collections.sort(library, Media m);
+
+	Collections.sort(library);
 		
 	}
 
