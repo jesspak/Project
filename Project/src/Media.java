@@ -1,15 +1,18 @@
-import java.io.Serializable;
+import java.io.*;//JB
+import java.util.Collections; //JP
 /**
- * One object of class Media stores a list of the various
- * media types.
+ * One object of class Media stores a list of the various media types.
+ * 
  * @author JessicaPak
- *
+ * 
  */
-public class Media implements Serializable, Cloneable  { //JB,JP
+public class Media implements Serializable, Comparable { // JB,JP
+	private int type;
 	private String title; // JB
 	private String format; // JP
-	private String location; //JP
-	private String notes; //JP
+	private String location; // JP
+	private String notes; // JP
+
 	/**
 	 * default constructor//JP
 	 */
@@ -20,6 +23,7 @@ public class Media implements Serializable, Cloneable  { //JB,JP
 		location = "Location";// JP
 		notes = "Notes";// JP
 	}
+
 	/**
 	 * parameterized constructor//JP
 	 * 
@@ -36,30 +40,54 @@ public class Media implements Serializable, Cloneable  { //JB,JP
 		location = newLocation;
 		notes = newNotes;
 	}
+	
+	/**
+	 * returns the current value of type//JB
+	 */
+	public int getType(){// JB
+		return type;// JB
+	}
+
 	/**
 	 * returns the current value of title//JB
 	 */
-	public String getTitle() {// JB
+	public String getTitle(){// JB
 		return title;// JB
 	}
+
 	/**
 	 * returns the current value of format//JP
 	 */
 	public String getFormat() {// JP
 		return format;// JP
 	}
+
 	/**
 	 * returns the current value of location//JP
 	 */
 	public String getLocation() {// JP
 		return location;// JP
 	}
+
 	/**
 	 * returns the current value of notes//JP
 	 */
 	public String getNotes() {// JP
 		return notes;// JP
 	}
+	
+	/**
+	 * sets the value of type to newType//JB
+	 * 
+	 * @param newType
+	 *            //JB
+	 */
+
+	public void setType(int newType) {// JB
+		type = newType;// JB
+	}
+
+
 	/**
 	 * sets the value of title to newTitle//JB
 	 * 
@@ -70,6 +98,7 @@ public class Media implements Serializable, Cloneable  { //JB,JP
 	public void setTitle(String newTitle) {// JB
 		title = newTitle;// JB
 	}
+
 	/**
 	 * sets the value of format to newFormat//JP
 	 * 
@@ -80,41 +109,65 @@ public class Media implements Serializable, Cloneable  { //JB,JP
 	public void setFormat(String newFormat) {// JP
 		format = newFormat;// JP
 	}
+
 	/**
 	 * sets the value of location to newLocation//JP
 	 * 
 	 * @param newLocation
 	 */
-public void setLocation(String newLocation) {// JP
+	public void setLocation(String newLocation) {// JP
 		location = newLocation;// JP
 	}
+
 	/**
 	 * sets the value of notes to newNotes//JP
 	 * 
 	 * @param newNotes
 	 */
-
 	public void setNotes(String newNotes) {// JP
 		notes = newNotes;// JP
 	}
+
 	/**
 	 * Returns a String containing all the data stored in this object. JP
 	 */
 	public String toString() {// JP
-		return "Title: " + this.getTitle() + "\n" + "Format: " + this.getFormat() + "\n"
-				+ "Location: " + this.getLocation()// JB
-				+ "\n" + "Notes: " + this.getNotes() + "\n" + "\n";// JP
+		String result = "";
+			result = "Title: " + this.getTitle() + "\n" + "Format: "
+					+ this.getFormat() + "\n" + "Location: " + this.getLocation()// JB
+					+ "\n" + "Notes: " + this.getNotes() + "\n" + "\n";// JP
+		return result;
 	}
-
+	/**
+	 * tests whether object is instance of given class
+	 * @param mediaType
+	 * @return true or false
+	 */
+	public boolean isInstanceOfClass(String mediaType) {
+		if (mediaType == "Book" && this instanceof Book)
+			return true;
+		else if (mediaType == "Song" && this instanceof Song)
+			return true;
+		else if (mediaType == "Video" && this instanceof Video)
+			return true;
+		else if (mediaType == "Video Game" && this instanceof VideoGame)
+			return true;
+		else
+			return false;
+		// TODO Auto-generated method stub
+	}
 	/**
 	 * Compares entries to allow them to be sorted.//JB
 	 */
-//	public int compareTo(Media m) {// JB
-//		int compareQuantity = ((Media) compareTitle).getQuantity(); 
-//		 
-//		//ascending order
-//		return this.quantity - compareQuantity;
-//
-//	}
-
+	public int compareTo(Object m) {
+		if (this.getType()<((Media) m).getType()){
+			return -1;
+		}// JB
+		else if (this.getType()>((Media)m).getType()){
+			return 1;
+		}
+		else{
+			return this.title.compareTo(((Media)m).getTitle());
+		}
+	}
 }

@@ -1,5 +1,7 @@
-import java.util.ArrayList; // JB
-import java.io.Serializable;//JB
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.io.*; // JB
+import java.util.Collections;
 
 /**
  * one object of this class creates a library and has methods that adds, prints,
@@ -8,6 +10,8 @@ import java.io.Serializable;//JB
 public class Library implements Serializable {
 
 	private ArrayList<Media> library;
+	private ObjectInputStream input;
+	private ObjectOutputStream output;
 
 	/**
 	 * default constructor JP
@@ -17,196 +21,138 @@ public class Library implements Serializable {
 	}
 
 	/**
-	 * adds a book to the library JB
+	 * adds a media object to the library JB
 	 */
-	public void add(Media m) {
-		library.add(m);
+	public void add(Media m) throws IOException {
+		if (m.getTitle().isEmpty()){//JB
+			System.out.println("You must add a title.");//JB
+			return;}
+		library.clear();
+		try{
+			try{
+				openReadFile();
+				while (true){
+					Media med = (Media) input.readObject();
+					library.add(med);
+				}
+			}
+			catch (EOFException endOfFileException){
+				//Read passed end of file
+			}
+			catch (ClassNotFoundException classNotFoundException){
+				System.out.println("Unable to create object");
+			}
+			catch (IOException ioException){
+				// Read empty file
+			}
+			finally{
+				closeReadFile();
+			}
+			openWriteFile();
+			for(Media med: library){
+				output.writeObject(med);
+			}
+			output.writeObject(m);
+			closeWriteFile();
+			library.clear();
+		}
+		catch (IOException ioException){
+			throw new IOException("Error writing to file");
+		}
 	}
-
 	/**
 	 * sorts the all the entries in the list JP
 	 */
 	public void sort(){
-		ArrayList<Media> bookList = new ArrayList<Media>();
-		for (int i=0; i< library.size(); i++)
-		{
-			if (library.get(i) instanceof Book)
-			{
-				if (bookList.size() == 0) 
-					bookList.add(library.get(i));
-				else 
-					for (int j = 0; j < bookList.size(); j++)
-					{
-						if ((library.get(i).getTitle().compareTo(bookList.get(j).getTitle())) < 0)
-						{
-							bookList.add(j, library.get(i));
-							break;
-						}
-						else
-							bookList.add(library.get(i));
-					}
-			}
-		}
-
-		ArrayList<Media> songList = new ArrayList<Media>();
-		for (int i2=0; i2 < library.size(); i2++)
-		{
-			if (library.get(i2) instanceof Song)
-			{
-				if (songList.size() == 0) 
-				songList.add(library.get(i2));
-			else
-				for (int j2 = 0; j2 < songList.size(); j2++)
-				{
-					if ((library.get(i2).getTitle().compareTo(songList.get(j2).getTitle())) < 0)
-					{
-						songList.add(j2, library.get(i2));
-						break;
-					}
-						else
-							songList.add(library.get(i2));
-
-				}
-
-			}
-		}	
-
-		
-		ArrayList<Media> videoList = new ArrayList<Media>();
-		for (int i3=0; i3 < library.size(); i3++)
-		{
-			if(library.get(i3) instanceof Video)
-			{
-				if (videoList.size() == 0) 
-					videoList.add(library.get(i3));
-				else
-					for (int j3 = 0; j3 < videoList.size(); j3++)
-					{
-						if ((library.get(i3).getTitle().compareTo(videoList.get(j3).getTitle())) < 0)
-						{
-							videoList.add(j3, library.get(i3));
-							break;
-						}
-						else
-							videoList.add(library.get(i3));
-					}
-			}
-		}
-
-		ArrayList<Media> videoGameList = new ArrayList<Media>();
-		for (int i4=0; i4< library.size(); i4++)
-		{
-			if(library.get(i4)  instanceof VideoGame)
-			{
-				if (videoGameList.size() == 0) 
-					videoGameList.add(library.get(i4));
-				else
-					for (int j4 = 0; j4 < videoGameList.size(); j4++)
-					{
-						if ((library.get(i4).getTitle().compareTo(videoGameList.get(j4).getTitle())) < 0)
-						{
-							videoGameList.add(j4, library.get(i4));
-							break;
-						}
-						else
-							videoGameList.add(library.get(i4));
-
-					}
-
-			}
-		}
-
-
-		ArrayList<Media> sortedArrayList = new ArrayList<Media>();
-			sortedArrayList.addAll(bookList);
-			sortedArrayList.addAll(songList);
-			sortedArrayList.addAll(videoList);
-			sortedArrayList.addAll(videoGameList);
-
-		library = sortedArrayList;
-		}
-
-
+		Collections.sort(library);
+	}	
 	/**
-	 * takes in the media type as a parameter and searches the list of that same
-	 * media type JP
+	 * opens a text file so objects may be read into it //JB
 	 */
-	// public Media retrieveByMedia(Media m){
-	// int i= 0;
-	// Media curMedia;
-	// for (i = 0; i < library.size(); i++){
-	// curMedia = library.get(i);
-	// if(curMedia == title){
-	// break;
-	// }
-	// }
-	// return curMedia;
 
-	public String retriveByMedia(String type){
-
-		if (type == "books")
-			searchInBooks();
-		else if (type == "songs")
-			searchInSongs();
-		else if (type == "videos")
-			searchInVideos();
-		else if (type == "video games")
-			searchInVideogames();
-		return null;
+	public void openReadFile() throws IOException{
+		try {
+			input = new ObjectInputStream(new FileInputStream("library.ser"));
+		}
+		catch(IOException ioException){
+			throw ioException;
+		}
 	}
-
-	public String searchInBooks() {
-		ArrayList<Media> bookList = new ArrayList<Media>();
-		for (int i = 0; i < library.size(); i++) {
-			if (library.get(i) instanceof Book) {
-				bookList.add(library.get(i));
+	
+	/**
+	 * opens the text file so objects can be read from it and displayed //JB
+	 */
+	public void openWriteFile() throws IOException{
+		try {
+			output = new ObjectOutputStream(new FileOutputStream("library.ser"));
+		}
+		catch(IOException ioException){
+			System.out.println("Error opening file.");
+		}
+	}
+	
+	/**
+	 * closes text file after all objects have been added to it //JB
+	 */
+	public void closeReadFile(){
+		try {
+			if (input !=  null)
+				input.close();
+		}
+		catch(IOException ioException){
+			System.out.println("Error closing file.");
+		}
+	}
+	
+	/**
+	 * closes text file after contents of file have been displayed //JB
+	 */
+	public void closeWriteFile(){
+		try {
+			if (output !=  null)
+				output.close();
+		}
+		catch(IOException ioException){
+			System.out.println("Error closing file.");
+		}
+	}
+	
+	/**
+	 * Returns a string containing all the data stored in this object JB
+	 */
+	public String toString() {
+		String result = "Library Contents:\n ";
+		try{
+			openReadFile();
+			while (true){
+				Media m = (Media)input.readObject();
+				result += m.toString()+"\n";
 			}
 		}
-
-		return bookList.toString();
-	}
-
-	public String searchInSongs() {
-		ArrayList<Media> songList = new ArrayList<Media>();
-		for (int i = 0; i < library.size(); i++) {
-			if (library.get(i) instanceof Song) {
-				songList.add(library.get(i));
-			}
+		catch(EOFException endOfFileException){
+			
 		}
-		return songList.toString();
-	}
-
-	public String searchInVideos() {
-		ArrayList<Media> videoList = new ArrayList<Media>();
-		for (int i = 0; i < library.size(); i++) {
-			if (library.get(i) instanceof Video) {
-				videoList.add(library.get(i));
-			}
+		catch(ClassNotFoundException classNotFoundException){
+			System.out.println("Unable to create object");
 		}
-		return videoList.toString();
-	}
-
-	public String searchInVideogames() {
-		ArrayList<Media> videoGameList = new ArrayList<Media>();
-		for (int i = 0; i < library.size(); i++) {
-			if (library.get(i) instanceof VideoGame) {
-				videoGameList.add(library.get(i));
-			}
+		catch (IOException ioException){
+			
 		}
-		return videoGameList.toString();
+		finally{
+			closeReadFile();
+		}
+		return result;
 	}
-
 	/**
 	 * takes in the title as a parameter and searches the list of that same
-	 * title JP
+	 * title TB
 	 */
 	public String retrieveByTitle(String title) {
 		String curMedia = "";
-		int i = 0;
-		for (i = 0; i < library.size(); i++) {
+		for (int i = 0; i < library.size(); i++) {
 			curMedia = library.get(i).getTitle();
 			if (curMedia == title) {
-				break;
+				return curMedia;
 			}
 		}
 		return curMedia;
@@ -221,28 +167,16 @@ public class Library implements Serializable {
 	}
 
 	/**
-	 * deletes an entry from an ArrayList JB
+	 * deletes an entry from an ArrayList TB
 	 */
-	public void deleteEntry(Media title) { // JP
+	public void deleteEntry(String title, String mediaType) { // JP
 		int i = 0;
 		for (i = 0; i < library.size(); i++) {
-			Media curMedia = library.get(i);
-			if (curMedia == title) {
-				break;
+			String curMedia = library.get(i).getTitle();
+			if (curMedia == title && library.get(i).isInstanceOfClass(mediaType) == true) {
+				library.remove(i);
 			}
 		}
-		library.remove(i);
-	}
 
-	/**
-	 * Returns a string containing all the data stored in this object JP
-	 */
-	public String toString(){
-		String result = " ";
-	    for (int i = 0; i < library.size(); i++) {
-	        result += " " + library.get(i);
-	    }
-	    return result;
 	}
 }
-

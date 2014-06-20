@@ -22,7 +22,9 @@ public class GUI extends JFrame implements ActionListener {
 	private JButton searchByBoth; //JP
 
 	private JButton displayAll; //JP
-	private JButton delete; //JP
+	private JButton deleteByTitle; //JP
+	private JButton deleteByMedia; //JP
+	private JButton deleteByBoth; //JP
 
 	private JTextField addType; //JP
 	private JTextField title; //JP
@@ -77,10 +79,18 @@ public class GUI extends JFrame implements ActionListener {
 		this.add(displayAll);
 		displayAll.addActionListener(this);
 
-		delete = new JButton("Delete");
-		this.add(delete);
-		delete.addActionListener(this);
+		deleteByTitle = new JButton("Delete by Title");
+		this.add(deleteByTitle);
+		deleteByTitle.addActionListener(this);
 
+		deleteByMedia = new JButton("Delete by Media");
+		this.add(deleteByMedia);
+		deleteByMedia.addActionListener(this);
+		
+		deleteByBoth = new JButton("Delete by Both");
+		this.add(deleteByBoth);
+		deleteByBoth.addActionListener(this);
+		
 		this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
 		this.setVisible(true);
 	}
@@ -136,19 +146,28 @@ public class GUI extends JFrame implements ActionListener {
 			Main.gotNewVideoGame(title, format, location, notes);
 		}
 		else if(evt.getSource() == searchByTitle) {
-
+			String title = JOptionPane.showInputDialog(null, "Enter Title: ");
+			Main.searchTitle(title);
 		}
 		else if(evt.getSource() == searchByMedia) {
-
+			String media = JOptionPane.showInputDialog(null, "Enter Media: ");
 		}
 		else if(evt.getSource() == searchByBoth) {
-
+			String title = JOptionPane.showInputDialog(null, "Enter Title: ");
+			String media = JOptionPane.showInputDialog(null, "Enter Media: ");
 		}
 		else if(evt.getSource() == displayAll) {
 			JOptionPane.showMessageDialog(null, Main.printLibrary());
 		}	
-		else if(evt.getSource() == delete) {
-
+		else if(evt.getSource() == deleteByTitle) {
+			String title = JOptionPane.showInputDialog(null, "Enter Title: ");
+		}
+		else if(evt.getSource() == deleteByMedia) {
+			String media = JOptionPane.showInputDialog(null, "Enter Media Type: ");
+		}
+		else if(evt.getSource() == deleteByBoth) {
+			String title = JOptionPane.showInputDialog(null, "Enter Title: ");
+			String media = JOptionPane.showInputDialog(null, "Enter Media: ");
 		}
 		validate();
 	}

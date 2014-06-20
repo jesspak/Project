@@ -54,6 +54,38 @@ public class Main {// JP
 	public static String printLibrary(){
 		return ourLibrary.toString();
 	}
+	/**
+	 * calls the library's retrieve by title function
+	 * @param args
+	 */
+	public static String searchTitle(String title){
+		return ourLibrary.retrieveByTitle(title);
+	}
+	/**
+	 * calls the library's retrieve by media function
+	 * @param args
+	 */
+	public static String searchMedia(String media){
+		return ourLibrary.retrieveByTitle(media);
+	}
+	/**
+	 * calls the library's retrieve by title function
+	 * @param args
+	 */
+	public static String searchBoth(String title, String media){
+		return ourLibrary.retrieveByTitleAndMedia(title, media);
+	}
+	/**
+	 * calls the library's retrieve by title, media, or both function
+	 * then deletes the specific entry.
+	 */
+	public static void deleteByTitle(String title){
+		ourLibrary.deleteEntryByTitle(title);
+	}
+	/**
+	 * our main function
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		gui = new GUI();
 		ourLibrary = new Library();
