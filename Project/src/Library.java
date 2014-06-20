@@ -76,29 +76,13 @@ public class Library implements Serializable  {
 	public void add(Media m) {
 		library.add(m);
 		
-//	    saveToDisk(m);
+
 	}
 
-	/**
-	 * sorts the all the entries in the list TB
-	 */
-	
 
 
-	/**
-	 * takes in the media type as a parameter and searches the list of that same
-	 * media type TB
-	 */
-	// public Media retrieveByMedia(Media m){
-	// int i= 0;
-	// Media curMedia;
-	// for (i = 0; i < library.size(); i++){
-	// curMedia = library.get(i);
-	// if(curMedia == title){
-	// break;
-	// }
-	// }
-	// return curMedia;
+
+
 
 	/**
 	 * prints all entries in library
@@ -234,7 +218,7 @@ public class Library implements Serializable  {
 	 * @param title
 	 */
 	public void deleteEntryByTitle(String title){
-		retrieveByTitle(title);
+		library.remove(retrieveByTitle(title));
 	}
 	
 	
