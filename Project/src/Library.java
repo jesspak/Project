@@ -12,7 +12,7 @@ import java.io.Serializable;//JB
  * one object of this class creates a library and has methods that adds, prints,
  * deletes, and retrieves the data.
  */
-public class Library implements Serializable, Comparable  {
+public class Library implements Serializable  {
 	
 //	static File MasterDB_F = new File ("library.db");
 
@@ -221,18 +221,23 @@ public class Library implements Serializable, Comparable  {
 	}
 
 	/**
-	 * deletes an entry from an ArrayList TB
+	 * deletes entry from library TB
+	 * @param title
+	 * @param mediaType
 	 */
-	public void deleteEntry(String title, String mediaType) { // JP
-		int i = 0;
-		for (i = 0; i < library.size(); i++) {
-			String curMedia = library.get(i).getTitle();
-			if (curMedia == title && library.get(i).isInstanceOfClass(mediaType) == true) {
-				library.remove(i);
+	public void deleteEntryByTitleAndMediaType(String title, String mediaType) { // JP
+				library.remove(retrieveByTitleAndMedia(mediaType, title));
 			}
-		}
 	
+	/**
+	 * deletes entry from library TB
+	 * @param title
+	 */
+	public void deleteEntryByTitle(String title){
+		retrieveByTitle(title);
 	}
+	
+	
 
 	/**
 	 * Returns a string containing all the data stored in this object TB
@@ -246,7 +251,7 @@ public class Library implements Serializable, Comparable  {
 
 
 
-	Collections.sort(library);
+
 		
 	}
 
