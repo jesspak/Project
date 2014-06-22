@@ -6,6 +6,7 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.TextField;
 import java.applet.Applet;
@@ -147,17 +148,43 @@ public class GUI extends JFrame implements ActionListener {
 		}
 		else if(evt.getSource() == searchByTitle) {
 			String title = JOptionPane.showInputDialog(null, "Enter Title: ");
-			Main.searchTitle(title);
+			JTextArea textArea = new JTextArea(Main.printLibrary());
+			JScrollPane scrollPane = new JScrollPane(textArea);
+			textArea.setLineWrap(true);
+			textArea.setWrapStyleWord(true);
+			scrollPane.setPreferredSize(new Dimension(500, 500));
+			JOptionPane.showMessageDialog(null, scrollPane, Main.searchTitle(title), EXIT_ON_CLOSE, null);
+			
 		}
 		else if(evt.getSource() == searchByMedia) {
 			String media = JOptionPane.showInputDialog(null, "Enter Media: ");
+			JTextArea textArea = new JTextArea(Main.printLibrary());
+			JScrollPane scrollPane = new JScrollPane(textArea);
+			textArea.setLineWrap(true);
+			textArea.setWrapStyleWord(true);
+			scrollPane.setPreferredSize(new Dimension(500, 500));
+			JOptionPane.showMessageDialog(null, scrollPane, Main.searchMedia(media), EXIT_ON_CLOSE, null);
+			
 		}
 		else if(evt.getSource() == searchByBoth) {
 			String title = JOptionPane.showInputDialog(null, "Enter Title: ");
 			String media = JOptionPane.showInputDialog(null, "Enter Media: ");
+
+			JTextArea textArea = new JTextArea(Main.printLibrary());
+			JScrollPane scrollPane = new JScrollPane(textArea);
+			textArea.setLineWrap(true);
+			textArea.setWrapStyleWord(true);
+			scrollPane.setPreferredSize(new Dimension(500, 500));
+			JOptionPane.showMessageDialog(null, scrollPane, Main.searchBoth(title, media), EXIT_ON_CLOSE, null);
+			
 		}
 		else if(evt.getSource() == displayAll) {
-			JOptionPane.showMessageDialog(null, Main.printLibrary());
+			JTextArea textArea = new JTextArea(Main.printLibrary());
+			JScrollPane scrollPane = new JScrollPane(textArea);
+			textArea.setLineWrap(true);
+			textArea.setWrapStyleWord(true);
+			scrollPane.setPreferredSize(new Dimension(500, 500));
+			JOptionPane.showMessageDialog(null, scrollPane, Main.printLibrary(), EXIT_ON_CLOSE, null);
 		}	
 		else if(evt.getSource() == deleteByTitle) {
 			String title = JOptionPane.showInputDialog(null, "Enter Title: ");

@@ -167,6 +167,7 @@ public class Media implements Serializable, Comparable { // JB,JP
 			return 1;
 		}
 		else{
+			
 			return this.title.compareTo(((Media)m).getTitle());
 		}
 	}

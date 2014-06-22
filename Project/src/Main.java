@@ -1,4 +1,6 @@
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * The creates a Media list and adds, deletes, change, and search the various
@@ -11,12 +13,18 @@ public class Main {// JP
 	/**
 	 * gets user input from the view and sets its values to  
 	 * a new Book object and adds it to the library
+	 * @throws IOException 
 	 */
+	
 	public static void gotNewBook(String authorInput, String title, 
 			String format, String location, String notes){	
 		Book newBook = new Book(authorInput, title, 
 				format,location, notes);
-		ourLibrary.add(newBook);
+		try{
+			ourLibrary.add(newBook);
+		} catch (IOException e){
+			e.printStackTrace();
+		}
 	}
 	/**
 	 * gets user input from the view and sets its values to  
@@ -26,7 +34,12 @@ public class Main {// JP
 			String format, String location, String notes){
 		Song newSong = new Song(artistInput, title, genre, 
 				format, location, notes);
-		ourLibrary.add(newSong);
+		try {
+			ourLibrary.add(newSong);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	/**
 	 * gets user input from the view and sets its values to  
@@ -35,7 +48,12 @@ public class Main {// JP
 	public static void gotNewVideo(String starInput, String title, 
 			String format, String location, String notes){
 		Video newVideo = new Video(starInput, title, format, location, notes);
-		ourLibrary.add(newVideo);
+		try {
+			ourLibrary.add(newVideo);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	/**
 	 * gets user input from the view and sets its values to  
@@ -44,7 +62,12 @@ public class Main {// JP
 	public static void gotNewVideoGame(String title, 
 			String format, String location, String notes){
 		VideoGame newVideoGame = new VideoGame(title, format, location, notes);
-		ourLibrary.add(newVideoGame);
+		try {
+			ourLibrary.add(newVideoGame);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	/**
 	 * calls the Library's toString() and returns the entire 
@@ -52,6 +75,12 @@ public class Main {// JP
 	 * @return
 	 */
 	public static String printLibrary(){
+		try{
+			ourLibrary.sort();
+		} catch (IOException e){
+			e.printStackTrace();
+		}
+		
 		return ourLibrary.toString();
 	}
 	/**
@@ -59,37 +88,95 @@ public class Main {// JP
 	 * @param args
 	 */
 	public static String searchTitle(String title){
-		return ourLibrary.retrieveByTitle(title);
+		String stringResult = " ";
+		Media newMedia = new Media(title,null, null, null);
+		try{
+			ArrayList<Media> result = ourLibrary.retrieveByTitle(newMedia);
+			for(Media m: result){
+				stringResult += m.toString();
+			}
+		} catch (IOException e){
+			e.printStackTrace();
+		}
+		
+		return stringResult;
+	
 	}
 	/**
 	 * calls the library's retrieve by media function
 	 * @param args
 	 */
-	public static String searchMedia(String media){
-		return ourLibrary.retrieveByTitle(media);
+	public static String searchMedia(String media){	
+		String stringResult = " ";
+		Media newMedia = new Media();
+		if(media.equals("Book") || media.equals("book"))
+			newMedia.setType(1);
+		else if(media.equals("Song") || media.equals("song"))
+			newMedia.setType(2);
+		else if(media.equals("Video") || media.equals("video"))
+			newMedia.setType(3);
+		else if(media.equals("Video Game") || media.equals("video game"))
+			newMedia.setType(4);
+		try{
+			ArrayList<Media> result = ourLibrary.retrieveByMedia(newMedia);
+
+			for(Media m: result){
+				stringResult += m.toString();
+			}
+		} catch (IOException e){
+			e.printStackTrace();
+		}
+		return stringResult;
 	}
 	/**
 	 * calls the library's retrieve by title function
 	 * @param args
 	 */
 	public static String searchBoth(String title, String media){
-		return ourLibrary.retrieveByTitleAndMedia(title, media);
+		String stringResult = " ";
+		Media newMedia = new Media();
+		newMedia.setTitle(title);
+		if(media.equals("Book") || media.equals("book"))
+			newMedia.setType(1);
+		else if(media.equals("Song") || media.equals("song"))
+			newMedia.setType(2);
+		else if(media.equals("Video") || media.equals("video"))
+			newMedia.setType(3);
+		else if(media.equals("Video Game") || media.equals("video game"))
+			newMedia.setType(4);
+		try{
+			ArrayList<Media> result = ourLibrary.retrieveByTitleAndMedia(newMedia);
+			for(Media m: result){
+				stringResult += m.toString();
+			}
+		} catch (IOException e){
+			e.printStackTrace();
+		}
+		return stringResult;
 	}
 	/**
-	 * calls the library's retrieve by title, media, or both function
+	 * calls the library's retrieve by title
 	 * then deletes the specific entry.
 	 */
 	public static void deleteByTitle(String title){
-		ourLibrary.deleteEntryByTitle(title);
+		Media newMedia = new Media();
+		newMedia.setTitle(title);
+		try{
+			ourLibrary.delete(newMedia);
+		} catch(IOException e){
+			e.printStackTrace();
+		}
+		
 	}
+
 	/**
 	 * our main function
 	 * @param args
+	 * @throws IOException 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		gui = new GUI();
-		ourLibrary = new Library();
+		ourLibrary = new Library();		
 	}
-
 }
 
