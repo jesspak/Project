@@ -15,7 +15,7 @@ public class Song extends Media implements Serializable {// JB
 	 */
 	public Song() {// JP
 		super();// JP
-		super.setType(2);//JB
+		super.setType(2);// JB
 		artist = "Artist";
 		genre = "Genre";
 	}
@@ -45,7 +45,8 @@ public class Song extends Media implements Serializable {// JB
 	}
 
 	/**
-	 * sets the value of songArtist to newSongArtist JP 
+	 * sets the value of songArtist to newSongArtist JP
+	 * 
 	 * @param newSongArtist
 	 */
 	public void setArtist(String newArtist) {// JP
@@ -54,7 +55,9 @@ public class Song extends Media implements Serializable {// JB
 
 	/**
 	 * sets the value of songGenre to newSongGenre JP
-	 * @param newSongGenre JP
+	 * 
+	 * @param newSongGenre
+	 *            JP
 	 */
 	public void setGenre(String newGenre) {// JP
 		genre = newGenre;// JP

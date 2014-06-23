@@ -24,40 +24,36 @@ public class Library implements Serializable {
 	 * adds a media object to the library JB
 	 */
 	public void add(Media m) throws IOException {
-		if (m.getTitle().isEmpty()){//JB
-			System.out.println("You must add a title.");//JB
-			return;}
+		if (m.getTitle().isEmpty()) {// JB
+			System.out.println("You must add a title.");// JB
+			return;
+		}
 		library.clear();
-		try{
-			try{
+		try {
+			try {
 				openReadFile();
-				while (true){
+				while (true) {
 					Media med = (Media) input.readObject();
 					library.add(med);
 				}
-			}
-			catch (EOFException endOfFileException){
-				//Read passed end of file
-			}
-			catch (ClassNotFoundException classNotFoundException){
+			} catch (EOFException endOfFileException) {
+				// Read passed end of file
+			} catch (ClassNotFoundException classNotFoundException) {
 				System.out.println("Unable to create object");
-			}
-			catch (IOException ioException){
+			} catch (IOException ioException) {
 				// Read empty file
-			}
-			finally{
+			} finally {
 				closeReadFile();
 			}
 			library.add(m);
-			Collections.sort(library);	
+			//Collections.sort(library);
 			openWriteFile();
-			for(Media med: library){
+			for (Media med : library) {
 				output.writeObject(med);
 			}
 			closeWriteFile();
 			library.clear();
-		}
-		catch (IOException ioException){
+		} catch (IOException ioException) {
 			throw new IOException("Error writing to file");
 		}
 	}
@@ -71,6 +67,7 @@ public class Library implements Serializable {
 				openReadFile();
 				while (true){
 					Media med = (Media) input.readObject();
+					Collections.sort(library);
 					library.add(med);
 				}
 			}
@@ -103,85 +100,77 @@ public class Library implements Serializable {
 	 * opens a text file so objects may be read into it //JB
 	 */
 
-	public void openReadFile() throws IOException{
+	public void openReadFile() throws IOException {
 		try {
 			input = new ObjectInputStream(new FileInputStream("library.ser"));
-		}
-		catch(IOException ioException){
+		} catch (IOException ioException) {
 			throw ioException;
 		}
 	}
-	
+
 	/**
 	 * opens the text file so objects can be read from it and displayed //JB
 	 */
-	public void openWriteFile() throws IOException{
+	public void openWriteFile() throws IOException {
 		try {
 			output = new ObjectOutputStream(new FileOutputStream("library.ser"));
-		}
-		catch(IOException ioException){
+		} catch (IOException ioException) {
 			System.out.println("Error opening file.");
 		}
 	}
-	
+
 	/**
 	 * closes text file after all objects have been added to it //JB
 	 */
-	public void closeReadFile(){
+	public void closeReadFile() {
 		try {
-			if (input !=  null)
+			if (input != null)
 				input.close();
-		}
-		catch(IOException ioException){
+		} catch (IOException ioException) {
 			System.out.println("Error closing file.");
 		}
 	}
-	
+
 	/**
 	 * closes text file after contents of file have been displayed //JB
 	 */
-	public void closeWriteFile(){
+	public void closeWriteFile() {
 		try {
-			if (output !=  null)
+			if (output != null)
 				output.close();
-		}
-		catch(IOException ioException){
+		} catch (IOException ioException) {
 			System.out.println("Error closing file.");
 		}
 	}
-	
+
 	/**
 	 * Returns a string containing all the data stored in this object JB
 	 */
 	public String toString() {
 		String result = "Library Contents:\n ";
-		try{
+		try {
 			openReadFile();
-			while (true){
-				Media m = (Media)input.readObject();
-				result += m.toString()+"\n";
+			while (true) {
+				Media m = (Media) input.readObject();
+				result += m.toString() + "\n";
 			}
-		}
-		catch(EOFException endOfFileException){
-			
-		}
-		catch(ClassNotFoundException classNotFoundException){
+		} catch (EOFException endOfFileException) {
+
+		} catch (ClassNotFoundException classNotFoundException) {
 			System.out.println("Unable to create object");
-		}
-		catch (IOException ioException){
-			
-		}
-		finally{
+		} catch (IOException ioException) {
+
+		} finally {
 			closeReadFile();
 		}
 		return result;
 	}
+
 	/**
 	 * takes in the title as a parameter and searches the list of that same
 	 * title TB
 	 */
-	public ArrayList<Media> retrieveByTitle(Media t)
-			throws IOException {
+	public ArrayList<Media> retrieveByTitle(Media t) throws IOException {
 		library.clear();
 		try {
 			openReadFile();
@@ -203,20 +192,19 @@ public class Library implements Serializable {
 		return library;// JB
 	}
 
-
 	/**
 	 * takes in the media type and title as a parameter and searches the list of
 	 * that same media type and title JP
 	 */
-	public ArrayList<Media> retrieveByTitleAndMedia(Media tm)
+	public ArrayList<Media> retrieveByTitleAndMedia(Media m)
 			throws IOException {
 		library.clear();
 		try {
 			openReadFile();
 			while (true) {
 				Media med = (Media) input.readObject();
-				if (med.getTitle().equals(tm.getTitle())
-						&& med.getType() == tm.getType())
+				if (med.getTitle().equals(m.getTitle())
+						&& med.getType() == m.getType())
 					library.add(med);
 			}
 		} catch (EOFException endOfFileException) {
@@ -231,20 +219,21 @@ public class Library implements Serializable {
 
 		return library;// JB
 	}
+
 	/**
 	 * retrieve by type
+	 * 
 	 * @param t
 	 * @return
 	 * @throws IOException
 	 */
-	public ArrayList<Media> retrieveByMedia(Media m)
-			throws IOException {
+	public ArrayList<Media> retrieveByMedia(Media m) throws IOException {
 		library.clear();
 		try {
 			openReadFile();
 			while (true) {
 				Media med = (Media) input.readObject();
-				if (med.getType() == m.getType())
+				if (m.getType() == med.getType())
 					library.add(med);
 			}
 		} catch (EOFException endOfFileException) {
@@ -264,40 +253,36 @@ public class Library implements Serializable {
 	 * deletes an entry from an ArrayList TB
 	 */
 	public void delete(Media m) throws IOException {
-		if (m.getTitle().isEmpty()){//JB
-			System.out.println("You must add a title.");//JB
-			return;}
+		if (m.getTitle().isEmpty()) {// JB
+			System.out.println("You must add a title.");// JB
+			return;
+		}
 		library.clear();
-		try{
-			try{
+		try {
+			try {
 				openReadFile();
-				while (true){
+				while (true) {
 					Media med = (Media) input.readObject();
-					if(!med.equals(m))
+					if (!med.equals(m))
 						library.add(med);
 				}
-			}
-			catch (EOFException endOfFileException){
-				//Read passed end of file
-			}
-			catch (ClassNotFoundException classNotFoundException){
+			} catch (EOFException endOfFileException) {
+				// Read passed end of file
+			} catch (ClassNotFoundException classNotFoundException) {
 				System.out.println("Unable to create object");
-			}
-			catch (IOException ioException){
+			} catch (IOException ioException) {
 				// Read empty file
-			}
-			finally{
+			} finally {
 				closeReadFile();
 			}
 			openWriteFile();
-			for(Media med: library){
+			for (Media med : library) {
 				output.writeObject(med);
 			}
 			output.writeObject(m);
 			closeWriteFile();
 			library.clear();
-		}
-		catch (IOException ioException){
+		} catch (IOException ioException) {
 			throw new IOException("Error writing to file");
 		}
 	}

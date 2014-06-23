@@ -1,12 +1,13 @@
 import java.io.*;//JB
 import java.util.Collections; //JP
+
 /**
  * One object of class Media stores a list of the various media types.
  * 
  * @author JessicaPak
  * 
  */
-public class Media implements Serializable, Comparable { // JB,JP
+public class Media implements Serializable, Comparable<Media> { // JB,JP
 	private int type;
 	private String title; // JB
 	private String format; // JP
@@ -22,6 +23,7 @@ public class Media implements Serializable, Comparable { // JB,JP
 		format = "Format";// JP
 		location = "Location";// JP
 		notes = "Notes";// JP
+		type = 1;
 	}
 
 	/**
@@ -39,19 +41,20 @@ public class Media implements Serializable, Comparable { // JB,JP
 		format = newFormat;
 		location = newLocation;
 		notes = newNotes;
+		
 	}
-	
+
 	/**
 	 * returns the current value of type//JB
 	 */
-	public int getType(){// JB
+	public int getType() {// JB
 		return type;// JB
 	}
 
 	/**
 	 * returns the current value of title//JB
 	 */
-	public String getTitle(){// JB
+	public String getTitle() {// JB
 		return title;// JB
 	}
 
@@ -75,7 +78,7 @@ public class Media implements Serializable, Comparable { // JB,JP
 	public String getNotes() {// JP
 		return notes;// JP
 	}
-	
+
 	/**
 	 * sets the value of type to newType//JB
 	 * 
@@ -86,7 +89,6 @@ public class Media implements Serializable, Comparable { // JB,JP
 	public void setType(int newType) {// JB
 		type = newType;// JB
 	}
-
 
 	/**
 	 * sets the value of title to newTitle//JB
@@ -133,13 +135,15 @@ public class Media implements Serializable, Comparable { // JB,JP
 	 */
 	public String toString() {// JP
 		String result = "";
-			result = "Title: " + this.getTitle() + "\n" + "Format: "
-					+ this.getFormat() + "\n" + "Location: " + this.getLocation()// JB
-					+ "\n" + "Notes: " + this.getNotes() + "\n" + "\n";// JP
+		result = "Title: " + this.getTitle() + "\n" + "Format: "
+				+ this.getFormat() + "\n" + "Location: " + this.getLocation()// JB
+				+ "\n" + "Notes: " + this.getNotes() + "\n" + "\n";// JP
 		return result;
 	}
+
 	/**
 	 * tests whether object is instance of given class
+	 * 
 	 * @param mediaType
 	 * @return true or false
 	 */
@@ -156,19 +160,18 @@ public class Media implements Serializable, Comparable { // JB,JP
 			return false;
 		// TODO Auto-generated method stub
 	}
+
 	/**
 	 * Compares entries to allow them to be sorted.//JB
 	 */
-	public int compareTo(Object m) {
-		if (this.getType()<((Media) m).getType()){
+	public int compareTo(Media m) {
+		System.out.println("I'm Here.");
+		if (getType() < getType()) {
 			return -1;
-		}// JB
-		else if (this.getType()>((Media)m).getType()){
+		} else if (getType() >getType()) {
 			return 1;
-		}
-		else{
-			
-			return this.title.compareTo(((Media)m).getTitle());
+		} else {
+			return getTitle().compareTo(getTitle());
 		}
 	}
 }

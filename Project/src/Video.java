@@ -15,7 +15,7 @@ public class Video extends Media implements Serializable { // JP JB
 	 */
 	public Video() {
 		super();
-		super.setType(3);//JB
+		super.setType(3);// JB
 		star = "Star";
 	}
 
