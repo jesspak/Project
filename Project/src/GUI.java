@@ -1,6 +1,6 @@
 /**
  * one object of this class creates a graphical user
- * interface
+ * interface JP/JB
  */
 import java.awt.event.*;
 
@@ -25,9 +25,8 @@ public class GUI extends JFrame implements ActionListener {
 	private JButton searchByBoth; // JP
 
 	private JButton displayAll; // JP
-	private JButton deleteByTitle; // JP
-	private JButton deleteByMedia; // JP
-	private JButton deleteByBoth; // JP
+	private JButton delete; // JP
+
 
 	/**
 	 * creates components and adds the components to the frame JP
@@ -68,17 +67,10 @@ public class GUI extends JFrame implements ActionListener {
 		this.add(displayAll);
 		displayAll.addActionListener(this);
 
-		deleteByTitle = new JButton("Delete by Title");
-		this.add(deleteByTitle);
-		deleteByTitle.addActionListener(this);
+		delete = new JButton("Delete");
+		this.add(delete);
+		delete.addActionListener(this);
 
-		deleteByMedia = new JButton("Delete by Media");
-		this.add(deleteByMedia);
-		deleteByMedia.addActionListener(this);
-
-		deleteByBoth = new JButton("Delete by Both");
-		this.add(deleteByBoth);
-		deleteByBoth.addActionListener(this);
 
 		this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
 		this.setVisible(true);
@@ -160,10 +152,7 @@ public class GUI extends JFrame implements ActionListener {
 
 		} else if (evt.getSource() == searchByBoth) {
 			String title = JOptionPane.showInputDialog(null, "Enter Title: ");
-			String media = JOptionPane.showInputDialog(null, "For Book [1]"
-					+ " For Song [2]"
-					+ " For Video [3]"
-					+ " For Video Game [4] ");
+			String media = JOptionPane.showInputDialog(null, "Enter Media: ");
 
 			JTextArea textArea = null;
 			textArea = new JTextArea(Main.searchBoth(title, media));
@@ -196,17 +185,21 @@ public class GUI extends JFrame implements ActionListener {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		} else if (evt.getSource() == deleteByTitle) {
-			String title = JOptionPane.showInputDialog(null, "Enter Title: ");
-			Main.deleteByTitle(title);
-		} else if (evt.getSource() == deleteByMedia) {
-			String media = JOptionPane.showInputDialog(null,
-					"Enter Media Type: ");
+		} else if (evt.getSource() == delete) {
+			String option = JOptionPane.showInputDialog(null, "Would you like to delete by title or media type?"
+					+ " Please enter Title or Media");
+			if(option.equals("Title"))
+			{
+				String title = JOptionPane.showInputDialog(null, "Enter Title: ");
+				Main.deleteByTitle(title);
+			}
+			else if(option.equals("Media")){		
+				String media = JOptionPane.showInputDialog(null,
+						"Enter Media Type: ");
+				Main.deleteByMedia(media);
+			}	
 			
-		} else if (evt.getSource() == deleteByBoth) {
-			String title = JOptionPane.showInputDialog(null, "Enter Title: ");
-			String media = JOptionPane.showInputDialog(null, "Enter Media: ");
-		}
+		}	
 		validate();
 	}
 }

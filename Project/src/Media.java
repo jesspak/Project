@@ -3,7 +3,6 @@ import java.util.Collections; //JP
 
 /**
  * One object of class Media stores a list of the various media types.
- * 
  * @author JessicaPak
  * 
  */
@@ -40,8 +39,7 @@ public class Media implements Serializable, Comparable<Media> { // JB,JP
 		title = newTitle;
 		format = newFormat;
 		location = newLocation;
-		notes = newNotes;
-		
+		notes = newNotes;		
 	}
 
 	/**
@@ -81,40 +79,33 @@ public class Media implements Serializable, Comparable<Media> { // JB,JP
 
 	/**
 	 * sets the value of type to newType//JB
-	 * 
 	 * @param newType
 	 *            //JB
 	 */
-
 	public void setType(int newType) {// JB
 		type = newType;// JB
 	}
 
 	/**
 	 * sets the value of title to newTitle//JB
-	 * 
 	 * @param newTitle
 	 *            //JB
 	 */
-
 	public void setTitle(String newTitle) {// JB
 		title = newTitle;// JB
 	}
 
 	/**
 	 * sets the value of format to newFormat//JP
-	 * 
 	 * @param newFormat
 	 *            //JP
 	 */
-
 	public void setFormat(String newFormat) {// JP
 		format = newFormat;// JP
 	}
 
 	/**
 	 * sets the value of location to newLocation//JP
-	 * 
 	 * @param newLocation
 	 */
 	public void setLocation(String newLocation) {// JP
@@ -123,7 +114,6 @@ public class Media implements Serializable, Comparable<Media> { // JB,JP
 
 	/**
 	 * sets the value of notes to newNotes//JP
-	 * 
 	 * @param newNotes
 	 */
 	public void setNotes(String newNotes) {// JP
@@ -142,36 +132,15 @@ public class Media implements Serializable, Comparable<Media> { // JB,JP
 	}
 
 	/**
-	 * tests whether object is instance of given class
-	 * 
-	 * @param mediaType
-	 * @return true or false
-	 */
-	public boolean isInstanceOfClass(String mediaType) {
-		if (mediaType == "Book" && this instanceof Book)
-			return true;
-		else if (mediaType == "Song" && this instanceof Song)
-			return true;
-		else if (mediaType == "Video" && this instanceof Video)
-			return true;
-		else if (mediaType == "Video Game" && this instanceof VideoGame)
-			return true;
-		else
-			return false;
-		// TODO Auto-generated method stub
-	}
-
-	/**
-	 * Compares entries to allow them to be sorted.//JB
+	 * Compares entries to allow them to be sorted.//JB JP
 	 */
 	public int compareTo(Media m) {
-		System.out.println("I'm Here.");
-		if (getType() < getType()) {
+		if (this.getType() < m.getType()) {
 			return -1;
-		} else if (getType() >getType()) {
+		} else if (this.getType() >m.getType()) {
 			return 1;
 		} else {
-			return getTitle().compareTo(getTitle());
+			return this.getTitle().compareTo(m.getTitle());
 		}
 	}
 }

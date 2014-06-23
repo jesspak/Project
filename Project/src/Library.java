@@ -67,8 +67,8 @@ public class Library implements Serializable {
 				openReadFile();
 				while (true){
 					Media med = (Media) input.readObject();
-					Collections.sort(library);
 					library.add(med);
+					Collections.sort(library);
 				}
 			}
 			catch (EOFException endOfFileException){
@@ -171,8 +171,8 @@ public class Library implements Serializable {
 	 * title TB
 	 */
 	public ArrayList<Media> retrieveByTitle(Media t) throws IOException {
-		library.clear();
-		try {
+		library.clear(); 
+		try { //JB
 			openReadFile();
 			while (true) {
 				Media med = (Media) input.readObject();
@@ -199,7 +199,7 @@ public class Library implements Serializable {
 	public ArrayList<Media> retrieveByTitleAndMedia(Media m)
 			throws IOException {
 		library.clear();
-		try {
+		try { //JP
 			openReadFile();
 			while (true) {
 				Media med = (Media) input.readObject();
@@ -221,11 +221,10 @@ public class Library implements Serializable {
 	}
 
 	/**
-	 * retrieve by type
-	 * 
-	 * @param t
+	 * retrieve by Media type
+	 * @param m
 	 * @return
-	 * @throws IOException
+	 * @throws IOException //JP JB
 	 */
 	public ArrayList<Media> retrieveByMedia(Media m) throws IOException {
 		library.clear();
@@ -250,20 +249,22 @@ public class Library implements Serializable {
 	}
 
 	/**
-	 * deletes an entry from an ArrayList TB
+	 * deletes an entry by media from an ArrayList JP
 	 */
-	public void delete(Media m) throws IOException {
+	public void deleteMedia(Media m) throws IOException {
+		
 		if (m.getTitle().isEmpty()) {// JB
 			System.out.println("You must add a title.");// JB
 			return;
 		}
 		library.clear();
 		try {
-			try {
+			
+			try {	
 				openReadFile();
 				while (true) {
 					Media med = (Media) input.readObject();
-					if (!med.equals(m))
+					if ((med.getType() != (m.getType())))
 						library.add(med);
 				}
 			} catch (EOFException endOfFileException) {
@@ -279,7 +280,44 @@ public class Library implements Serializable {
 			for (Media med : library) {
 				output.writeObject(med);
 			}
-			output.writeObject(m);
+			closeWriteFile();
+			library.clear();
+		} catch (IOException ioException) {
+			throw new IOException("Error writing to file");
+		}
+	}
+	/**
+	 * deletes an entry by title from an ArrayList JP
+	 */
+	public void delete(Media m) throws IOException {
+		
+		if (m.getTitle().isEmpty()) {// JB
+			System.out.println("You must add a title.");// JB
+			return;
+		}
+		library.clear();
+		try {
+			
+			try {	
+				openReadFile();
+				while (true) {
+					Media med = (Media) input.readObject();
+					if (!med.getTitle().equals(m.getTitle()))
+						library.add(med);
+				}
+			} catch (EOFException endOfFileException) {
+				// Read passed end of file
+			} catch (ClassNotFoundException classNotFoundException) {
+				System.out.println("Unable to create object");
+			} catch (IOException ioException) {
+				// Read empty file
+			} finally {
+				closeReadFile();
+			}
+			openWriteFile();
+			for (Media med : library) {
+				output.writeObject(med);
+			}
 			closeWriteFile();
 			library.clear();
 		} catch (IOException ioException) {

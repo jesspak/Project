@@ -21,7 +21,6 @@ public class Book extends Media implements Serializable { // JB
 
 	/**
 	 * parameterized constructor
-	 * 
 	 * @param author
 	 * @param title
 	 * @param format
@@ -52,7 +51,6 @@ public class Book extends Media implements Serializable { // JB
 
 	/**
 	 * sets the value of author to newAuthor
-	 * 
 	 * @param newAuthor
 	 *            JP
 	 */

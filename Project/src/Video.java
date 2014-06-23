@@ -32,6 +32,7 @@ public class Video extends Media implements Serializable { // JP JB
 	public Video(String newTitle, String newStar, String newFormat,
 			String newLocation, String newNotes) {
 		super(newTitle, newFormat, newLocation, newNotes); // JP
+		super.setType(3);
 		star = newStar;
 	}
 
@@ -44,7 +45,6 @@ public class Video extends Media implements Serializable { // JP JB
 
 	/**
 	 * sets the value of videoStar to newVideoStar
-	 * 
 	 * @param newVideoStar
 	 *            JP
 	 */

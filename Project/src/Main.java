@@ -14,10 +14,8 @@ public class Main {// JP
 	/**
 	 * gets user input from the view and sets its values to a new Book object
 	 * and adds it to the library
-	 * 
 	 * @throws IOException
 	 */
-
 	public static void gotNewBook(String authorInput, String title,
 			String format, String location, String notes) {
 		Book newBook = new Book(authorInput, title, format, location, notes);
@@ -77,7 +75,6 @@ public class Main {// JP
 	/**
 	 * calls the Library's toString() and returns the entire library to the view
 	 * to be printed out.
-	 * 
 	 * @return
 	 * @throws IOException 
 	 */
@@ -91,8 +88,8 @@ public class Main {// JP
 	}
 
 	/**
-	 * calls the library's retrieve by title function
-	 * 
+	 * calls the library's retrieve by title function and sends it to the view to be 
+	 * printed out
 	 * @param args
 	 */
 	public static String searchTitle(String title) {
@@ -112,20 +109,20 @@ public class Main {// JP
 	}
 
 	/**
-	 * calls the library's retrieve by media function
-	 * 
+	 * calls the library's retrieve by media function and sends it to the view 
+	 * to be printed out
 	 * @param args
 	 */
 	public static String searchMedia(String media) {
 		String stringResult = " ";
 		Media newMedia = new Media();
-		if (media.equals("1") )
+		if (media.equals("book") || media.equals("Book") )
 			newMedia.setType(1);
-		else if (media.equals("2") )
+		else if (media.equals("song") || media.equals("Song"))
 			newMedia.setType(2);
-		else if (media.equals("3"))
+		else if (media.equals("video") || media.equals("Video"))
 			newMedia.setType(3);
-		else if (media.equals("4"))
+		else if (media.equals("video game") || media.equals("Video Game"))
 			newMedia.setType(4);
 		try {
 			ArrayList<Media> result = ourLibrary.retrieveByMedia(newMedia);
@@ -140,8 +137,8 @@ public class Main {// JP
 	}
 
 	/**
-	 * calls the library's retrieve by title function
-	 * 
+	 * calls the library's retrieve by both function and sends it to the
+	 * view to be printed out
 	 * @param args
 	 */
 	public static String searchBoth(String title, String media) {
@@ -180,6 +177,10 @@ public class Main {// JP
 			e.printStackTrace();
 		}
 	}
+	/**
+	 * deletes by media type
+	 * @param media
+	 */
 	public static void deleteByMedia(String media){
 		Media newMedia = new Media();
 		if (media.equals("Book") || media.equals("book"))
@@ -190,6 +191,11 @@ public class Main {// JP
 			newMedia.setType(3);
 		else if(media.equals("Video Game") || media.equals("video game"))
 			newMedia.setType(4);
+		try{
+			ourLibrary.deleteMedia(newMedia);
+		}catch (IOException e){
+			e.printStackTrace();
+		}
 	}
 	/**
 	 * our main function
@@ -200,13 +206,6 @@ public class Main {// JP
 	public static void main(String[] args) throws IOException {
 		gui = new GUI();
 		ourLibrary = new Library();
-		Book newBook = new Book();
-		System.out.println(newBook.getType());
-		Song newSong = new Song();
-		System.out.println(newSong.getType());
-		Video newVideo = new Video();
-		System.out.println(newVideo.getType());
-		VideoGame newVG = new VideoGame();
-		System.out.println(newVG.getType());
+
 	}
 }
